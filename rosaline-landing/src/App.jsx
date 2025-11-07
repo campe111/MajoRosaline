@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-terra">
-      <div className="sticky top-0 z-50 border-b border-rose/20 bg-white/80 backdrop-blur">
+      <div className="sticky top-0 z-50 border-b border-rose/20 bg-white/80 backdrop-blur sm:fixed sm:inset-x-0 sm:top-0">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
           <a
             href="#inicio"
@@ -75,6 +75,14 @@ export default function App() {
         {mobileOpen && (
           <div className="sm:hidden">
             <div className="border-t border-rose/20 bg-white/95 px-4 pb-6 pt-4 shadow-lg">
+      <div className="hidden sm:block">
+        <div className="fixed inset-x-0 top-0 z-40 hidden border-b border-rose/20 bg-white/95 backdrop-blur-lg shadow-sm sm:block">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3 text-sm text-terra/70">
+            <span className="uppercase tracking-[0.3em]">Rosaline Olavarría</span>
+            <span className="uppercase tracking-[0.3em]">Consulta profesional: +54 2284 578166</span>
+          </div>
+        </div>
+      </div>
               <nav className="flex flex-col gap-4 text-sm font-medium uppercase tracking-[0.2em] text-terra">
                 {navigation.map((item) => (
                   <a key={item.label} href={item.href} onClick={handleNavigate} className="rounded-full px-2 py-1 transition-colors hover:text-rose">
@@ -91,7 +99,7 @@ export default function App() {
           </div>
         )}
       </div>
-      <main>
+      <main className="pt-2 sm:pt-28">
         <Hero />
         <Benefits />
         <Products />

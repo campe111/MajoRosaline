@@ -8,9 +8,9 @@ export default function Contact() {
           <div className="flex flex-col gap-8 lg:flex-row lg:gap-10">
             <div className="lg:w-2/5">
               <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Contacto</p>
-              <h2 className="mt-4 text-2xl text-rose sm:text-3xl">Agendá tu diagnóstico personalizado</h2>
+              <h2 className="mt-4 text-2xl text-rose sm:text-3xl">Consultanos lo que necesites</h2>
               <p className="mt-4 text-sm text-terra/80 sm:text-base">
-                Escribinos para coordinar envíos, conocer nuestros planes mayoristas o recibir una asesoría según tu tipo de cabello.
+                Coordiná envíos, solicitá precios mayoristas o pedinos asesoramiento sobre nuestros tratamientos profesionales.
               </p>
               <div className="mt-6 space-y-3">
                 <Button href="https://wa.me/542284578166" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
