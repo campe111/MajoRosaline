@@ -46,7 +46,7 @@ export default function App() {
             ))}
           </nav>
           <div className="hidden sm:inline-flex">
-            <Button href="https://wa.me/5491123456789" target="_blank" rel="noreferrer" variant="secondary">
+            <Button href="https://wa.me/542284578166" target="_blank" rel="noreferrer" variant="secondary">
               WhatsApp
             </Button>
           </div>
@@ -85,7 +85,7 @@ export default function App() {
                 ))}
               </nav>
               <div className="mt-5">
-                <Button href="https://wa.me/5491123456789" target="_blank" rel="noreferrer" className="w-full" variant="primary">
+                <Button href="https://wa.me/542284578166" target="_blank" rel="noreferrer" className="w-full" variant="primary">
                   WhatsApp
                 </Button>
               </div>

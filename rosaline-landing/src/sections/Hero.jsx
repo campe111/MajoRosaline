@@ -27,7 +27,7 @@ export default function Hero() {
             Tratamientos premium y fórmulas veganas para nutrir, proteger y realzar cada hebra. Descubrí una rutina hecha a medida para tu cabello.
           </p>
           <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-start">
-            <Button href="https://wa.me/5491123456789" target="_blank" rel="noreferrer">
+            <Button href="https://wa.me/542284578166" target="_blank" rel="noreferrer">
               Consultanos por envíos
             </Button>
             <Button href="#beneficios" variant="secondary">

@@ -52,6 +52,7 @@ rosaline-landing/
 - Los colores y fuentes están configurados en `tailwind.config.js` y disponibles como clases personalizadas (`bg-rose`, `bg-cream`, `font-display`, etc.).
 - `Button.jsx` define un botón reutilizable con variantes `primary`, `secondary` y `ghost`.
 - El logo oficial se encuentra en `src/assets/images/logo.jpg` e impacta en la navegación y el Hero, con soporte completo mobile-first.
+- CTA de contacto configurado con el número real `+54 2284 578166` (WhatsApp y enlace telefónico).
 - Cada sección se encuentra en `src/sections` y utiliza datos mockeados fáciles de reemplazar por contenido real.
 - Las animaciones se controlan con Framer Motion (`whileInView`, `motion.div`, etc.).
 

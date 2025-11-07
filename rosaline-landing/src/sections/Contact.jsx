@@ -12,10 +12,13 @@ export default function Contact() {
               <p className="mt-4 text-sm text-terra/80 sm:text-base">
                 Escribinos para coordinar envíos, conocer nuestros planes mayoristas o recibir una asesoría según tu tipo de cabello.
               </p>
-              <div className="mt-6">
-                <Button href="https://wa.me/5491123456789" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+              <div className="mt-6 space-y-3">
+                <Button href="https://wa.me/542284578166" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
                   Escribir por WhatsApp
                 </Button>
+                <p className="text-xs uppercase tracking-[0.25em] text-terra/80 sm:text-sm">
+                  Línea directa <a href="tel:+542284578166" className="font-semibold text-rose hover:underline">2284 578166</a>
+                </p>
               </div>
             </div>
             <form className="grid flex-1 grid-cols-1 gap-5 lg:grid-cols-2">
