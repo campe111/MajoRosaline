@@ -33,9 +33,9 @@ export default function Benefits() {
     <section id="beneficios" className="bg-white py-20">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 text-center">
         <div className="space-y-4">
-          <p className="text-sm uppercase tracking-[0.3em] text-olive/80">Beneficios</p>
+          <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Beneficios</p>
           <h2 className="text-3xl sm:text-4xl">Cuidamos tu cabello con propósito</h2>
-          <p className="mx-auto max-w-3xl text-base text-softBlack/70">
+          <p className="mx-auto max-w-3xl text-base text-terra/80">
             Cada tratamiento Rosaline Olavarría está diseñado para nutrir profundamente, potenciar la luminosidad natural y proteger la fibra capilar.
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function Benefits() {
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
-              className="rounded-3xl bg-beige/40 p-8 text-left shadow-[0_20px_40px_-20px_rgba(47,47,47,0.2)]"
+              className="rounded-3xl bg-cream/70 p-8 text-left shadow-[0_20px_40px_-20px_rgba(246,107,64,0.25)]"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-50px' }}
@@ -51,8 +51,8 @@ export default function Benefits() {
               variants={itemVariants}
             >
               <div className="text-4xl">{benefit.icon}</div>
-              <h3 className="mt-6 text-xl">{benefit.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-softBlack/70">{benefit.description}</p>
+              <h3 className="mt-6 text-xl text-rose">{benefit.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-terra/80">{benefit.description}</p>
             </motion.div>
           ))}
         </div>

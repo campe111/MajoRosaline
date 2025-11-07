@@ -4,7 +4,7 @@ Proyecto base para la landing page del emprendimiento de cosmética capilar **Ro
 
 ## Características principales
 
-- Estética femenina, natural y profesional usando la paleta: verde oliva `#6B8E23`, beige `#F5F5DC`, rosa empolvado `#E8C8C8`, gris cálido `#D3D3D3` y negro suave `#2F2F2F`.
+- Estética femenina, natural y profesional usando la paleta: rosa coral `#FB6066`, crema suave `#FFefc1`, amarillo miel `#FDD86E`, durazno `#FFA463` y terracota `#F66B40`.
 - Tipografías elegantes Playfair Display (títulos) y Open Sans (texto) provenientes de Google Fonts.
 - Secciones modulares listas para reutilizar: Hero, Beneficios, Productos, Testimonios y Contacto.
 - Botones reutilizables con variantes y micro-interacciones en hover/press.

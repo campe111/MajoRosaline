@@ -5,11 +5,11 @@ const baseClasses =
 
 const variants = {
   primary:
-    'bg-olive text-white shadow-lg shadow-olive/30 hover:bg-olive/90 focus-visible:outline-olive',
+    'bg-rose text-white shadow-lg shadow-rose/30 hover:bg-rose/90 focus-visible:outline-rose',
   secondary:
-    'bg-white text-olive border border-olive hover:bg-olive/10 focus-visible:outline-olive',
+    'bg-white text-rose border border-rose hover:bg-rose/10 focus-visible:outline-rose',
   ghost:
-    'bg-transparent text-softBlack border border-softBlack/20 hover:border-softBlack focus-visible:outline-softBlack'
+    'bg-transparent text-terra border border-terra/30 hover:border-terra focus-visible:outline-terra'
 }
 
 export default function Button({

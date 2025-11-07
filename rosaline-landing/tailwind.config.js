@@ -7,11 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        olive: "#6B8E23",
-        beige: "#F5F5DC",
-        blush: "#E8C8C8",
-        warmGray: "#D3D3D3",
-        softBlack: "#2F2F2F"
+        rose: "#fb6066",
+        cream: "#ffefc1",
+        honey: "#fdd86e",
+        melon: "#ffa463",
+        terra: "#f66b40"
       },
       fontFamily: {
         display: ["Playfair Display", "serif"],
