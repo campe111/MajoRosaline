@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Hero from './sections/Hero'
 import Benefits from './sections/Benefits'
 import Products from './sections/Products'
-import Testimonials from './sections/Testimonials'
 import Contact from './sections/Contact'
 import Button from './components/Button'
 import logo from './assets/images/logo.jpg'
@@ -11,7 +10,6 @@ const navigation = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Beneficios', href: '#beneficios' },
   { label: 'Productos', href: '#productos' },
-  { label: 'Testimonios', href: '#testimonios' },
   { label: 'Contacto', href: '#contacto' }
 ]
 
@@ -97,7 +95,6 @@ export default function App() {
         <Hero />
         <Benefits />
         <Products />
-        <Testimonials />
         <Contact />
       </main>
       <footer className="bg-rose py-10 text-center text-sm text-cream/90">

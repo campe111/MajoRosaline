@@ -6,7 +6,7 @@ Proyecto base para la landing page del emprendimiento de cosmética capilar **Ro
 
 - Estética femenina, natural y profesional usando la paleta: rosa coral `#FB6066`, crema suave `#FFefc1`, amarillo miel `#FDD86E`, durazno `#FFA463` y terracota `#F66B40`.
 - Tipografías elegantes Playfair Display (títulos) y Open Sans (texto) provenientes de Google Fonts.
-- Secciones modulares listas para reutilizar: Hero, Beneficios, Productos, Testimonios y Contacto.
+- Secciones modulares listas para reutilizar: Hero, Beneficios, Productos y Contacto.
 - Botones reutilizables con variantes y micro-interacciones en hover/press.
 - Animaciones suaves al hacer scroll con Framer Motion.
 - Layout responsive con navegación móvil y secciones optimizadas para pantallas pequeñas, listo para desplegar rápidamente en Vercel.
@@ -38,7 +38,6 @@ rosaline-landing/
 │  │  ├─ Hero.jsx
 │  │  ├─ Benefits.jsx
 │  │  ├─ Products.jsx
-│  │  ├─ Testimonials.jsx
 │  │  └─ Contact.jsx
 │  ├─ App.jsx
 │  ├─ index.css

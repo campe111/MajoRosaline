@@ -13,34 +13,58 @@ import logoImg from '../assets/images/logo.jpg'
 
 const products = [
   {
+    name: 'Elixir Oro Líquido',
+    description: 'Dosis de brillo y nutrición inmediata con aceites ligeros y aroma sofisticado.',
+    imageAlt: 'Elixir Oro Líquido',
+    images: [elixirImg]
+  },
+  {
     name: 'Caviar Fidelité',
-    description: 'Reparación intensiva con extractos marinos para devolver elasticidad y brillo.',
+    description: 'Tratamiento de reparación intensa con extractos marinos ricos en proteínas.',
     imageAlt: 'Tratamiento Caviar Fidelité',
-    images: [caviarImg, caviarImg2]
+    images: [caviarImg]
+  },
+  {
+    name: 'Caviar Fidelité Supreme',
+    description: 'Fórmula reforzada para cabellos exigentes que necesitan nutrición profunda.',
+    imageAlt: 'Caviar Fidelité Supreme',
+    images: [caviarImg2]
   },
   {
     name: 'Keratina Reestructurante',
     description: 'Sellado profesional que alisa, controla el frizz y realinea la fibra capilar.',
     imageAlt: 'Keratina Reestructurante',
-    images: [keratinaImg, keratinaImg2]
+    images: [keratinaImg]
   },
   {
-    name: 'Elixir Nutritivo',
-    description: 'Blend de aceites naturales para proteger puntas y sellar la hidratación diaria.',
-    imageAlt: 'Elixir Nutritivo',
-    images: [elixirImg]
+    name: 'Keratina Liss Control',
+    description: 'Versión avanzada para fibra rebelde con control de volumen prolongado.',
+    imageAlt: 'Keratina Liss Control',
+    images: [keratinaImg2]
   },
   {
     name: 'Cepillo Dompell Antifrizz',
-    description: 'Desenredado sin frizz con cerdas flexibles que protegen la fibra capilar húmeda o seca.',
+    description: 'Desenredado suave en húmedo o seco con cerdas flexibles que protegen la fibra.',
     imageAlt: 'Cepillo Dompell Antifrizz',
-    images: [cepilloImg, cepilloImg2]
+    images: [cepilloImg]
+  },
+  {
+    name: 'Cepillo Dompell Pocket',
+    description: 'Formato compacto ideal para cartera o bolso, mantiene el acabado disciplinado.',
+    imageAlt: 'Cepillo Dompell Pocket',
+    images: [cepilloImg2]
   },
   {
     name: 'Ampollas Ultra Repair',
     description: 'Concentrado nutritivo para shock de reparación y brillo inmediato en cabellos sensibilizados.',
     imageAlt: 'Ampollas Ultra Repair',
-    images: [ampollaImg, ampollaImg2]
+    images: [ampollaImg]
+  },
+  {
+    name: 'Ampollas Ultra Repair Plus',
+    description: 'Refuerzo de proteínas y aminoácidos para reconstruir la fibra en minutos.',
+    imageAlt: 'Ampollas Ultra Repair Plus',
+    images: [ampollaImg2]
   }
 ]
 
