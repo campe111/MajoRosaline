@@ -1,0 +1,7 @@
+{
+  "installCommand": "cd rosaline-landing && npm install",
+  "buildCommand": "cd rosaline-landing && npm run build",
+  "outputDirectory": "rosaline-landing/dist",
+  "framework": "vite"
+}
+
