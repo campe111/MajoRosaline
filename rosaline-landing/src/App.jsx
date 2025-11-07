@@ -3,6 +3,7 @@ import Benefits from './sections/Benefits'
 import Products from './sections/Products'
 import Testimonials from './sections/Testimonials'
 import Contact from './sections/Contact'
+import logo from './assets/images/logo.jpg'
 
 const navigation = [
   { label: 'Inicio', href: '#inicio' },
@@ -17,8 +18,13 @@ export default function App() {
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-terra">
       <div className="sticky top-0 z-50 border-b border-rose/20 bg-white/80 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#inicio" className="text-lg font-semibold uppercase tracking-[0.4em] text-rose">
-            Rosaline Olavarría
+          <a href="#inicio" className="flex items-center gap-3 text-lg font-semibold uppercase tracking-[0.4em] text-rose">
+            <img
+              src={logo}
+              alt="Logo Rosaline Olavarría"
+              className="h-12 w-12 rounded-full border border-rose/30 object-cover shadow-sm"
+            />
+            <span className="hidden sm:inline">Rosaline Olavarría</span>
           </a>
           <nav className="hidden items-center gap-6 text-sm font-medium uppercase tracking-[0.25em] text-terra/70 sm:flex">
             {navigation.map((item) => (

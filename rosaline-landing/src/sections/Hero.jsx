@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Button from '../components/Button'
+import logo from '../assets/images/logo.jpg'
 
 const heroVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -35,21 +36,17 @@ export default function Hero() {
           </div>
         </motion.div>
         <motion.div
-          className="relative flex h-80 w-80 items-center justify-center rounded-full bg-honey/70 shadow-2xl shadow-honey/50 sm:h-[28rem] sm:w-[28rem]"
+          className="relative flex h-80 w-80 items-center justify-center overflow-hidden rounded-full border-[6px] border-white/70 bg-gradient-to-br from-rose/30 via-cream to-white shadow-2xl shadow-rose/30 sm:h-[28rem] sm:w-[28rem]"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
         >
-          <div className="absolute inset-8 rounded-full border border-white/70" />
-          <div className="absolute inset-16 rounded-full bg-white/70" />
-          <motion.div
-            className="relative z-10 text-center"
-            animate={{ rotate: [0, 2, -2, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
-          >
-            <h2 className="text-3xl font-light uppercase tracking-[0.5em] text-rose/70">Hair Care</h2>
-            <p className="mt-6 text-sm uppercase tracking-[0.44em] text-terra/60">Natural &amp; Vegano</p>
-          </motion.div>
+          <img
+            src={logo}
+            alt="Ilustración Rosaline Cosmetica Capilar"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-terra/20 via-transparent to-transparent" />
         </motion.div>
       </div>
     </section>
