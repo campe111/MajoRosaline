@@ -25,16 +25,16 @@ const cardVariants = {
 
 export default function Products() {
   return (
-    <section id="productos" className="bg-cream py-20">
-      <div className="mx-auto w-full max-w-6xl px-6">
+    <section id="productos" className="bg-cream py-16 sm:py-20">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Productos</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl">Colección signature</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-terra/80">
+          <h2 className="mt-4 text-2xl sm:text-4xl">Colección signature</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-terra/80 sm:text-base">
             Fórmulas exclusivas desarrolladas para nutrir profundamente y prolongar los resultados de tu visita al salón.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-3 md:gap-8">
           {products.map((product, index) => (
             <motion.article
               key={product.name}
@@ -45,7 +45,7 @@ export default function Products() {
               custom={index}
               variants={cardVariants}
             >
-              <div className="relative h-56 overflow-hidden bg-gradient-to-br from-rose/40 via-cream to-white">
+              <div className="relative h-52 overflow-hidden bg-gradient-to-br from-rose/40 via-cream to-white sm:h-56">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(251,96,102,0.25),transparent_60%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(255,164,99,0.4),transparent_55%)]" />
                 <div className="absolute inset-6 rounded-2xl border border-white/60" aria-hidden />
@@ -53,9 +53,9 @@ export default function Products() {
                   Rosaline
                 </p>
               </div>
-              <div className="flex flex-1 flex-col gap-4 p-8">
-                <h3 className="text-2xl">{product.name}</h3>
-                <p className="text-sm leading-relaxed text-terra/80">{product.description}</p>
+              <div className="flex flex-1 flex-col gap-4 p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl">{product.name}</h3>
+                <p className="text-sm leading-relaxed text-terra/80 sm:text-base">{product.description}</p>
                 <div className="mt-auto flex items-center justify-between text-sm text-rose/70">
                   <span>Uso profesional</span>
                   <span>Línea exclusiva</span>

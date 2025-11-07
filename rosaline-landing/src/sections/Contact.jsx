@@ -2,14 +2,14 @@ import Button from '../components/Button'
 
 export default function Contact() {
   return (
-    <section id="contacto" className="bg-gradient-to-b from-white via-cream/60 to-white py-20">
-      <div className="mx-auto w-full max-w-5xl px-6">
-        <div className="rounded-3xl border border-rose/20 bg-white/85 p-10 backdrop-blur">
-          <div className="flex flex-col gap-10 lg:flex-row">
+    <section id="contacto" className="bg-gradient-to-b from-white via-cream/60 to-white py-16 sm:py-20">
+      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
+        <div className="rounded-3xl border border-rose/20 bg-white/85 p-8 backdrop-blur sm:p-10">
+          <div className="flex flex-col gap-8 lg:flex-row lg:gap-10">
             <div className="lg:w-2/5">
               <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Contacto</p>
-              <h2 className="mt-4 text-3xl text-rose">Agendá tu diagnóstico personalizado</h2>
-              <p className="mt-4 text-base text-terra/80">
+              <h2 className="mt-4 text-2xl text-rose sm:text-3xl">Agendá tu diagnóstico personalizado</h2>
+              <p className="mt-4 text-sm text-terra/80 sm:text-base">
                 Escribinos para coordinar envíos, conocer nuestros planes mayoristas o recibir una asesoría según tu tipo de cabello.
               </p>
               <div className="mt-6">
@@ -18,8 +18,8 @@ export default function Contact() {
                 </Button>
               </div>
             </div>
-            <form className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-2">
-              <label className="flex flex-col gap-2 text-sm uppercase tracking-[0.2em] text-rose/70">
+            <form className="grid flex-1 grid-cols-1 gap-5 lg:grid-cols-2">
+              <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.2em] text-rose/70 sm:text-sm">
                 Nombre
                 <input
                   type="text"
@@ -28,7 +28,7 @@ export default function Contact() {
                   className="rounded-full border border-rose/30 bg-white/70 px-5 py-3 text-base font-normal text-terra focus:border-rose focus:outline-none focus:ring-2 focus:ring-rose/30"
                 />
               </label>
-              <label className="flex flex-col gap-2 text-sm uppercase tracking-[0.2em] text-rose/70">
+              <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.2em] text-rose/70 sm:text-sm">
                 Email
                 <input
                   type="email"
@@ -37,7 +37,7 @@ export default function Contact() {
                   className="rounded-full border border-rose/30 bg-white/70 px-5 py-3 text-base font-normal text-terra focus:border-rose focus:outline-none focus:ring-2 focus:ring-rose/30"
                 />
               </label>
-              <label className="lg:col-span-2 flex flex-col gap-2 text-sm uppercase tracking-[0.2em] text-rose/70">
+              <label className="lg:col-span-2 flex flex-col gap-2 text-xs uppercase tracking-[0.2em] text-rose/70 sm:text-sm">
                 Consulta
                 <textarea
                   name="message"

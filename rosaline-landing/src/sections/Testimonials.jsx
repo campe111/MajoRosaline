@@ -25,26 +25,26 @@ const listVariants = {
 
 export default function Testimonials() {
   return (
-    <section id="testimonios" className="bg-white py-20">
-      <div className="mx-auto w-full max-w-5xl px-6 text-center">
+    <section id="testimonios" className="bg-white py-16 sm:py-20">
+      <div className="mx-auto w-full max-w-5xl px-4 text-center sm:px-6">
         <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Testimonios</p>
-        <h2 className="mt-4 text-3xl sm:text-4xl">Historias reales, resultados tangibles</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-base text-terra/80">
+        <h2 className="mt-4 text-2xl sm:text-4xl">Historias reales, resultados tangibles</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-sm text-terra/80 sm:text-base">
           La confianza de nuestras clientas y profesionales respalda cada fórmula y tratamiento Rosaline Olavarría.
         </p>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-3 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.blockquote
               key={testimonial.name}
-              className="flex h-full flex-col justify-between rounded-3xl bg-cream/70 p-8 text-left shadow-[0_25px_35px_-25px_rgba(251,96,102,0.25)]"
+              className="flex h-full flex-col justify-between rounded-3xl bg-cream/70 p-6 text-left shadow-[0_25px_35px_-25px_rgba(251,96,102,0.25)] sm:p-8"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-40px' }}
               custom={index}
               variants={listVariants}
             >
-              <p className="text-base leading-relaxed text-terra/90">“{testimonial.quote}”</p>
-              <span className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-rose/70">
+              <p className="text-sm leading-relaxed text-terra/90 sm:text-base">“{testimonial.quote}”</p>
+              <span className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-rose/70 sm:mt-6 sm:text-sm">
                 {testimonial.name}
               </span>
             </motion.blockquote>

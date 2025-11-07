@@ -9,7 +9,7 @@ Proyecto base para la landing page del emprendimiento de cosmética capilar **Ro
 - Secciones modulares listas para reutilizar: Hero, Beneficios, Productos, Testimonios y Contacto.
 - Botones reutilizables con variantes y micro-interacciones en hover/press.
 - Animaciones suaves al hacer scroll con Framer Motion.
-- Layout responsive y preparado para desplegar rápidamente en Vercel.
+- Layout responsive con navegación móvil y secciones optimizadas para pantallas pequeñas, listo para desplegar rápidamente en Vercel.
 
 ## Requisitos previos
 
@@ -51,7 +51,7 @@ rosaline-landing/
 
 - Los colores y fuentes están configurados en `tailwind.config.js` y disponibles como clases personalizadas (`bg-rose`, `bg-cream`, `font-display`, etc.).
 - `Button.jsx` define un botón reutilizable con variantes `primary`, `secondary` y `ghost`.
-- El logo oficial se encuentra en `src/assets/images/logo.jpg` e impacta en la navegación y el Hero.
+- El logo oficial se encuentra en `src/assets/images/logo.jpg` e impacta en la navegación y el Hero, con soporte completo mobile-first.
 - Cada sección se encuentra en `src/sections` y utiliza datos mockeados fáciles de reemplazar por contenido real.
 - Las animaciones se controlan con Framer Motion (`whileInView`, `motion.div`, etc.).
 
