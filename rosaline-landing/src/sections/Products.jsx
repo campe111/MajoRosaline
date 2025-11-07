@@ -1,10 +1,14 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import caviarImg from '../assets/images/products/caviar.jpg'
 import caviarImg2 from '../assets/images/products/caviar2.jpg'
 import keratinaImg from '../assets/images/products/keratina.jpg'
 import keratinaImg2 from '../assets/images/products/keratina2.jpg'
 import elixirImg from '../assets/images/products/oro-liquido.jpg'
+import cepilloImg from '../assets/images/products/cepillo.jpg'
+import cepilloImg2 from '../assets/images/products/cepillo2.jpg'
+import ampollaImg from '../assets/images/products/ampolla.jpg'
+import ampollaImg2 from '../assets/images/products/ampolla2.jpg'
 import logoImg from '../assets/images/logo.jpg'
 
 const products = [
@@ -25,6 +29,18 @@ const products = [
     description: 'Blend de aceites naturales para proteger puntas y sellar la hidratación diaria.',
     imageAlt: 'Elixir Nutritivo',
     images: [elixirImg]
+  },
+  {
+    name: 'Cepillo Dompell Antifrizz',
+    description: 'Desenredado sin frizz con cerdas flexibles que protegen la fibra capilar húmeda o seca.',
+    imageAlt: 'Cepillo Dompell Antifrizz',
+    images: [cepilloImg, cepilloImg2]
+  },
+  {
+    name: 'Ampollas Ultra Repair',
+    description: 'Concentrado nutritivo para shock de reparación y brillo inmediato en cabellos sensibilizados.',
+    imageAlt: 'Ampollas Ultra Repair',
+    images: [ampollaImg, ampollaImg2]
   }
 ]
 
@@ -33,10 +49,14 @@ const cardVariants = {
   visible: (index) => ({ opacity: 1, y: 0, transition: { delay: index * 0.15 } })
 }
 
-function ProductCard({ product, index }) {
+function ProductCard({ product, index, onImageClick }) {
   const [activeImage, setActiveImage] = useState(0)
 
   const currentImage = product.images?.[activeImage] ?? logoImg
+
+  const handleModalOpen = () => {
+    onImageClick(currentImage, product)
+  }
 
   return (
     <motion.article
@@ -47,11 +67,13 @@ function ProductCard({ product, index }) {
       custom={index}
       variants={cardVariants}
     >
-      <motion.figure
-        className="relative h-60 overflow-hidden bg-gradient-to-br from-rose/40 via-cream to-white sm:h-56"
+      <motion.button
+        type="button"
+        className="relative h-60 w-full overflow-hidden bg-gradient-to-br from-rose/40 via-cream to-white sm:h-56"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 1.08 }}
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+        onClick={handleModalOpen}
       >
         <img
           src={currentImage}
@@ -59,7 +81,8 @@ function ProductCard({ product, index }) {
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-terra/15 via-transparent to-transparent" />
-      </motion.figure>
+        <span className="sr-only">Ver {product.name}</span>
+      </motion.button>
       <div className="flex flex-1 flex-col gap-4 p-6 sm:p-8">
         <div>
           <h3 className="text-xl sm:text-2xl">{product.name}</h3>
@@ -93,6 +116,31 @@ function ProductCard({ product, index }) {
 }
 
 export default function Products() {
+  const [modalData, setModalData] = useState(null)
+
+  useEffect(() => {
+    if (modalData) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [modalData])
+
+  const handleImageClick = (image, product) => {
+    setModalData({
+      image,
+      title: product.name,
+      description: product.description,
+      alt: product.imageAlt
+    })
+  }
+
+  const handleCloseModal = () => setModalData(null)
+
   return (
     <section id="productos" className="bg-cream py-16 sm:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
@@ -105,10 +153,44 @@ export default function Products() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3 md:gap-8">
           {products.map((product, index) => (
-            <ProductCard key={product.name} product={product} index={index} />
+            <ProductCard key={product.name} product={product} index={index} onImageClick={handleImageClick} />
           ))}
         </div>
       </div>
+      <AnimatePresence>
+        {modalData && (
+          <motion.div
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-softBlack/75 px-4 py-10 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleCloseModal}
+          >
+            <motion.div
+              className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)]"
+              initial={{ scale: 0.92, opacity: 0.6 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 180, damping: 20 }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-rose shadow hover:bg-white"
+                onClick={handleCloseModal}
+                aria-label="Cerrar galería"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <img src={modalData.image} alt={modalData.alt} className="max-h-[75vh] w-full object-cover" />
+              <div className="space-y-2 bg-white/90 px-6 py-5">
+                <h3 className="text-lg font-semibold text-rose sm:text-xl">{modalData.title}</h3>
+                <p className="text-sm text-terra/80 sm:text-base">{modalData.description}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
