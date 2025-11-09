@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 
 const baseClasses =
   'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
@@ -22,7 +22,7 @@ export default function Button({
   const Component = href ? 'a' : 'button'
 
   return (
-    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
+    <Motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
       <Component
         className={`${baseClasses} ${variants[variant] ?? variants.primary} ${className}`}
         href={href}
@@ -30,7 +30,7 @@ export default function Button({
       >
         {children}
       </Component>
-    </motion.div>
+    </Motion.div>
   )
 }
 
