@@ -39,14 +39,14 @@ const products = [
     name: 'Elixir Oro Líquido',
     description: 'Dosis de brillo y nutrición inmediata con aceites ligeros y aroma sofisticado.',
     imageAlt: 'Elixir Oro Líquido',
-    images: [productFile(1), productFile(2)],
+    images: [productFile(1)],
     category: 'Elixires'
   },
   {
     name: 'Caviar Fidelité',
     description: 'Tratamiento de reparación intensa con extractos marinos ricos en proteínas.',
     imageAlt: 'Tratamiento Caviar Fidelité',
-    images: [productFile(3), productFile(4)],
+    images: [productFile(3)],
     category: 'Caviares'
   },
   {
