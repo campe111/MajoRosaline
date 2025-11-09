@@ -54,6 +54,7 @@ rosaline-landing/
 - CTA de contacto configurado con el número real `+54 2284 578166` (WhatsApp y enlace telefónico).
 - Cards de productos con galería de imágenes reales, zoom táctil/hover y modal fullscreen con fondo atenuado.
 - Buscador en la sección de productos que filtra por nombre, categoría y beneficios.
+- Métricas listas para Vercel Analytics (`@vercel/analytics`), integradas desde `App.jsx`.
 - Cada sección se encuentra en `src/sections` y utiliza datos mockeados fáciles de reemplazar por contenido real.
 - Las animaciones se controlan con Framer Motion (`whileInView`, `motion.div`, etc.).
 

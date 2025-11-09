@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Hero from './sections/Hero'
 import Benefits from './sections/Benefits'
 import Products from './sections/Products'
@@ -108,6 +109,7 @@ export default function App() {
       <footer className="bg-rose py-10 text-center text-sm text-cream/90">
         <p className="uppercase tracking-[0.25em]">© {new Date().getFullYear()} Rosaline Olavarría. Todos los derechos reservados.</p>
       </footer>
+      <Analytics />
     </div>
   )
 }
