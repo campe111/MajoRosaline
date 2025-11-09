@@ -1,7 +1,40 @@
 import { useState, useEffect } from 'react'
-import { motion as Motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import producto1 from '../assets/images/products/producto-1.jpg'
+import producto2 from '../assets/images/products/producto-2.jpg'
+import producto3 from '../assets/images/products/producto-3.jpg'
+import producto4 from '../assets/images/products/producto-4.jpg'
+import producto5 from '../assets/images/products/producto-5.jpg'
 import producto7 from '../assets/images/products/producto-7.jpg'
 import producto8 from '../assets/images/products/producto-8.jpg'
+import producto10 from '../assets/images/products/producto-10.jpg'
+import producto11 from '../assets/images/products/producto-11.jpg'
+import producto12 from '../assets/images/products/producto-12.jpg'
+import producto13 from '../assets/images/products/producto-13.jpg'
+import producto14 from '../assets/images/products/producto-14.jpg'
+import producto15 from '../assets/images/products/producto-15.jpg'
+import producto16 from '../assets/images/products/producto-16.jpg'
+import producto17 from '../assets/images/products/producto-17.jpg'
+import producto18 from '../assets/images/products/producto-18.jpg'
+import producto19 from '../assets/images/products/producto-19.jpg'
+import producto20 from '../assets/images/products/producto-20.jpg'
+import producto21 from '../assets/images/products/producto-21.jpg'
+import producto22 from '../assets/images/products/producto-22.jpg'
+import producto23 from '../assets/images/products/producto-23.jpg'
+import producto24 from '../assets/images/products/producto-24.jpg'
+import producto25 from '../assets/images/products/producto-25.jpg'
+import producto26 from '../assets/images/products/producto-26.jpg'
+import producto27 from '../assets/images/products/producto-27.jpg'
+import producto28 from '../assets/images/products/producto-28.jpg'
+import producto29 from '../assets/images/products/producto-29.jpg'
+import producto30 from '../assets/images/products/producto-30.jpg'
+import producto31 from '../assets/images/products/producto-31.jpg'
+import producto32 from '../assets/images/products/producto-32.jpg'
+import producto33 from '../assets/images/products/producto-33.jpg'
+import producto34 from '../assets/images/products/producto-34.jpg'
+import producto35 from '../assets/images/products/producto-35.jpg'
+import producto36 from '../assets/images/products/producto-36.jpg'
+import producto37 from '../assets/images/products/producto-37.jpg'
 import logoImg from '../assets/images/logo.jpg'
 
 const productImageModules = import.meta.glob('../assets/images/products/*.{jpg,jpeg,png}', {
@@ -33,7 +66,13 @@ const getProductImage = buildAssetGetter(productImageModules)
 const getProductThumbnail = buildAssetGetter(productThumbnailModules)
 
 const products = [
-
+  {
+    name: 'Elixir Oro Líquido',
+    description: 'Dosis de brillo y nutrición inmediata con aceites ligeros y aroma sofisticado.',
+    imageAlt: 'Elixir Oro Líquido',
+    images: ['IMG-20251107-WA0014.jpg', 'IMG-20251107-WA0015.jpg'],
+    category: 'Elixires'
+  },
   {
     name: 'Caviar Fidelité',
     description: 'Tratamiento de reparación intensa con extractos marinos ricos en proteínas.',
@@ -66,14 +105,14 @@ const products = [
     name: 'Cepillo Dompell Pocket',
     description: 'Formato compacto ideal para cartera o bolso, mantiene el acabado disciplinado.',
     imageAlt: 'Cepillo Dompell Pocket',
-    images: [producto7],
+    images: ['cepillo2.jpg'],
     category: 'Cepillos'
   },
   {
     name: 'Ampollas Ultra Repair',
     description: 'Concentrado nutritivo para shock de reparación y brillo inmediato en cabellos sensibilizados.',
     imageAlt: 'Ampollas Ultra Repair',
-    images: [producto8],
+    images: ['ampolla.jpg'],
     category: 'Ampollas'
   },
   {
