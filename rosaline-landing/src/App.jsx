@@ -62,12 +62,6 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-terra">
       <div className="sticky top-0 z-50 sm:fixed sm:inset-x-0 sm:top-0">
-        <div className="hidden bg-white/95 sm:block">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between border-b border-rose/10 px-6 py-2 text-[11px] uppercase tracking-[0.35em] text-terra/70">
-            <span>Rosaline Olavarría</span>
-            <span>Consulta profesional: +54 2284 578166</span>
-          </div>
-        </div>
         <div className="border-b border-rose/20 bg-white/85 backdrop-blur">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-5">
             <a
