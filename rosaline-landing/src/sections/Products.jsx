@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import oroLiquidoImg from '../assets/images/products/oro-liquido.jpg'
-import oroLiquidoImg2 from '../assets/images/products/oro-liquido2.jpg'
 import producto1 from '../assets/images/products/producto-1.jpg'
 import producto2 from '../assets/images/products/producto-2.jpg'
 import producto3 from '../assets/images/products/producto-3.jpg'
@@ -52,13 +50,6 @@ const products = [
     description: 'Tratamiento de reparación intensa con extractos marinos ricos en proteínas.',
     imageAlt: 'Tratamiento Caviar Fidelité',
     images: [producto1],
-    category: 'Caviares'
-  },
-  {
-    name: 'Caviar Fidelité Supreme',
-    description: 'Fórmula reforzada para cabellos exigentes que necesitan nutrición profunda.',
-    imageAlt: 'Caviar Fidelité Supreme',
-    images: [producto2],
     category: 'Caviares'
   },
   {
