@@ -53,6 +53,7 @@ rosaline-landing/
 - El logo oficial se encuentra en `src/assets/images/logo.jpg` e impacta en la navegación y el Hero, con soporte completo mobile-first.
 - CTA de contacto configurado con el número real `+54 2284 578166` (WhatsApp y enlace telefónico).
 - Cards de productos con galería de imágenes reales, zoom táctil/hover y modal fullscreen con fondo atenuado.
+- Buscador en la sección de productos que filtra por nombre, categoría y beneficios.
 - Cada sección se encuentra en `src/sections` y utiliza datos mockeados fáciles de reemplazar por contenido real.
 - Las animaciones se controlan con Framer Motion (`whileInView`, `motion.div`, etc.).
 
