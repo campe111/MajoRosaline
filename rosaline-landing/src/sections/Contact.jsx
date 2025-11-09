@@ -17,7 +17,7 @@ export default function Contact() {
               </p>
               <h2 className="text-2xl text-rose sm:text-[2.1rem] sm:leading-tight">Consultanos lo que necesites</h2>
               <p className="text-sm text-terra/80 sm:text-base">
-                Coordiná envíos, solicitá precios mayoristas o pedinos asesoramiento sobre nuestros tratamientos profesionales. Estamos
+                Coordiná envíos, solicitá precios mayoristas o pedinos asesoramiento sobre nuestros productos profesionales. Estamos
                 para acompañarte en cada etapa de tu cuidado capilar.
               </p>
               <div className="space-y-4 rounded-3xl border border-rose/15 bg-white/70 p-5">
@@ -31,7 +31,6 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-terra/60">
                   <span className="rounded-full border border-rose/20 px-3 py-1">Mayoristas</span>
-                  <span className="rounded-full border border-rose/20 px-3 py-1">Salones asociados</span>
                   <span className="rounded-full border border-rose/20 px-3 py-1">Asesoría personalizada</span>
                 </div>
                 <Button href="https://wa.me/542284578166" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
@@ -45,7 +44,7 @@ export default function Contact() {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Tu nombre completo"
+                  placeholder="Nombre"
                   className="rounded-full border border-rose/30 bg-white/70 px-5 py-3 text-base font-normal text-terra focus:border-rose focus:outline-none focus:ring-2 focus:ring-rose/30"
                 />
               </label>
