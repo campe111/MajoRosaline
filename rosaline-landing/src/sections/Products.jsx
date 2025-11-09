@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import producto1 from '../assets/images/products/producto-1.jpg'
-import producto2 from '../assets/images/products/producto-2.jpg'
 import producto3 from '../assets/images/products/producto-3.jpg'
 import producto4 from '../assets/images/products/producto-4.jpg'
 import producto5 from '../assets/images/products/producto-5.jpg'
 import producto7 from '../assets/images/products/producto-7.jpg'
-import producto8 from '../assets/images/products/producto-8.jpg'
 import producto10 from '../assets/images/products/producto-10.jpg'
 import producto11 from '../assets/images/products/producto-11.jpg'
 import producto12 from '../assets/images/products/producto-12.jpg'
@@ -38,7 +36,6 @@ import producto37 from '../assets/images/products/producto-37.jpg'
 import logoImg from '../assets/images/logo.jpg'
 
 const products = [
-
   {
     name: 'Caviar Fidelité',
     description: 'Tratamiento de reparación intensa con extractos marinos ricos en proteínas.',
@@ -72,16 +69,6 @@ const products = [
     description: 'Formato compacto ideal para cartera o bolso, mantiene el acabado disciplinado.',
     imageAlt: 'Cepillo Dompell Pocket',
     images: [producto7],
-    category: 'Cepillos'
-  },
-  {
-    name: 'Ampollas Ultra Repair',
-    description: 'Concentrado nutritivo para shock de reparación y brillo inmediato en cabellos sensibilizados.',
-    imageAlt: 'Ampollas Ultra Repair',
-    images: [producto8],
-    category: 'Ampollas'
-  },
-  {
     name: 'Ampollas Ultra Repair Plus',
     description: 'Refuerzo de proteínas y aminoácidos para reconstruir la fibra en minutos.',
     imageAlt: 'Ampollas Ultra Repair Plus',
