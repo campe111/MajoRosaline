@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 
 const benefits = [
   {
@@ -41,7 +41,7 @@ export default function Benefits() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit, index) => (
-            <motion.div
+            <Motion.div
               key={benefit.title}
               className="rounded-3xl bg-cream/70 p-6 text-left shadow-[0_20px_40px_-20px_rgba(246,107,64,0.25)] sm:p-8"
               initial="hidden"
@@ -53,7 +53,7 @@ export default function Benefits() {
               <div className="text-3xl sm:text-4xl">{benefit.icon}</div>
               <h3 className="mt-5 text-lg text-rose sm:mt-6 sm:text-xl">{benefit.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-terra/80 sm:text-base">{benefit.description}</p>
-            </motion.div>
+            </Motion.div>
           ))}
         </div>
       </div>
