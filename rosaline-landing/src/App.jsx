@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Analytics } from '@vercel/analytics/react'
+import { CookieConsentBanner } from './components/CookieConsentBanner'
 import Hero from './sections/Hero'
 import Benefits from './sections/Benefits'
 import Products from './sections/Products'
@@ -16,9 +17,46 @@ const navigation = [
 
 export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [hasConsent, setHasConsent] = useState(false)
+  const [bannerVisible, setBannerVisible] = useState(false)
 
-  const handleNavigate = () => {
+  useEffect(() => {
+    const storedConsent = window.localStorage.getItem('rosaline-consent')
+    if (storedConsent === 'granted') {
+      setHasConsent(true)
+    } else {
+      setBannerVisible(true)
+    }
+  }, [])
+
+  const handleConsent = (value) => {
+    setHasConsent(value)
+    window.localStorage.setItem('rosaline-consent', value ? 'granted' : 'denied')
+    setBannerVisible(false)
+  }
+
+  const scrollToSection = (hash) => {
+    if (typeof window === 'undefined' || !hash?.startsWith('#')) return
+    const element = document.querySelector(hash)
+    if (!element) return
+
+    const offset = window.innerWidth >= 640 ? 96 : 80
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+    const targetPosition = Math.max(elementPosition - offset, 0)
+
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' })
+
+    if (window.history?.replaceState) {
+      window.history.replaceState(null, '', hash)
+    }
+  }
+
+  const handleNavigate = (hash, event) => {
+    if (event) {
+      event.preventDefault()
+    }
     setMobileOpen(false)
+    requestAnimationFrame(() => scrollToSection(hash))
   }
 
   return (
@@ -27,7 +65,7 @@ export default function App() {
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
           <a
             href="#inicio"
-            onClick={handleNavigate}
+            onClick={(event) => handleNavigate('#inicio', event)}
             className="flex items-center gap-3 text-base font-semibold uppercase tracking-[0.3em] text-rose sm:text-lg sm:tracking-[0.4em]"
           >
             <img
@@ -39,7 +77,12 @@ export default function App() {
           </a>
           <nav className="hidden items-center gap-6 text-xs font-medium uppercase tracking-[0.25em] text-terra/70 sm:flex sm:text-sm">
             {navigation.map((item) => (
-              <a key={item.label} href={item.href} onClick={handleNavigate} className="transition-colors hover:text-rose">
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(event) => handleNavigate(item.href, event)}
+                className="transition-colors hover:text-rose"
+              >
                 {item.label}
               </a>
             ))}
@@ -86,7 +129,12 @@ export default function App() {
       </div>
               <nav className="flex flex-col gap-4 text-sm font-medium uppercase tracking-[0.2em] text-terra">
                 {navigation.map((item) => (
-                  <a key={item.label} href={item.href} onClick={handleNavigate} className="rounded-full px-2 py-1 transition-colors hover:text-rose">
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={(event) => handleNavigate(item.href, event)}
+                    className="rounded-full px-2 py-1 transition-colors hover:text-rose"
+                  >
                     {item.label}
                   </a>
                 ))}
@@ -109,7 +157,8 @@ export default function App() {
       <footer className="bg-rose py-10 text-center text-sm text-cream/90">
         <p className="uppercase tracking-[0.25em]">© {new Date().getFullYear()} Rosaline Olavarría. Todos los derechos reservados.</p>
       </footer>
-      <Analytics />
+      {bannerVisible && <CookieConsentBanner onConsent={handleConsent} />}
+      {hasConsent && <Analytics />}
     </div>
   )
 }
