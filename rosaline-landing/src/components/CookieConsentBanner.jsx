@@ -50,48 +50,47 @@ export function CookieConsentBanner({ onConsent }) {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[80] px-4 pb-4 sm:px-6 sm:pb-6">
-      <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-rose/40 bg-white/95 shadow-[0_40px_60px_-40px_rgba(47,47,47,0.35)] backdrop-blur">
-        <div className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:p-8">
+    <div className="fixed inset-x-0 bottom-4 z-[80] px-4 sm:px-6">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 rounded-3xl border border-rose/30 bg-white/90 px-5 py-4 shadow-lg backdrop-blur">
+        <div className="flex items-start justify-between gap-4">
           <div className="flex-1 space-y-3">
-            <p className="text-xs uppercase tracking-[0.3em] text-rose/70">Cookies y privacidad</p>
-            <h3 className="text-lg font-semibold text-rose sm:text-xl">Tu consentimiento nos ayuda a mejorar</h3>
-            <p className="text-sm text-terra/80 sm:text-base">
-              Utilizamos cookies propias y de terceros para procesar tus datos de navegación, analizar el rendimiento de nuestra
-              landing y ofrecerte servicios personalizados. Podés aceptar todas, ajustarlas a tu preferencia o rechazarlas.
+            <p className="text-[11px] uppercase tracking-[0.4em] text-rose/70">Cookies</p>
+            <h3 className="text-sm font-semibold text-rose sm:text-base">Mejoramos tu experiencia con tu permiso</h3>
+            <p className="text-xs text-terra/70 sm:text-sm">
+              Usamos cookies para recordar tus preferencias y entender cómo navegás.{' '}
+              <button
+                type="button"
+                className="font-semibold text-rose underline underline-offset-4 hover:text-terra"
+                onClick={() => setExpanded((prev) => !prev)}
+              >
+                {expanded ? 'Ver menos' : 'Ver más'}
+              </button>
             </p>
-            <button
-              type="button"
-              className="text-sm font-semibold text-rose underline underline-offset-4 transition hover:text-terra"
-              onClick={() => setExpanded((prev) => !prev)}
-            >
-              {expanded ? 'Ocultar configuración' : 'Gestionar preferencias'}
-            </button>
           </div>
-          <div className="flex flex-col gap-3 sm:w-56">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
             <button
               type="button"
               onClick={handleAccept}
-              className="w-full rounded-full bg-rose px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white shadow hover:bg-rose/90"
+              className="rounded-full bg-rose px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow hover:bg-rose/90 sm:text-sm"
             >
               Aceptar todas
             </button>
             <button
               type="button"
               onClick={handleDecline}
-              className="w-full rounded-full border border-rose px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-rose transition hover:bg-rose/10"
+              className="rounded-full border border-rose px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-rose transition hover:bg-rose/10 sm:text-sm"
             >
               Rechazar no esenciales
             </button>
           </div>
         </div>
         {expanded && (
-          <div className="border-t border-rose/20 bg-cream/60 p-6 sm:px-8">
+          <div className="border-t border-rose/20 bg-cream/60 p-4 sm:px-6">
             <div className="grid gap-4 sm:grid-cols-2">
               {preferenceOptions.map((option) => (
                 <label
                   key={option.id}
-                  className="flex items-start gap-3 rounded-2xl border border-rose/20 bg-white/80 p-4 shadow-sm transition hover:border-rose/40"
+                  className="flex items-start gap-3 rounded-2xl border border-rose/20 bg-white/80 p-3 shadow-sm transition hover:border-rose/40"
                 >
                   <input
                     type="checkbox"
