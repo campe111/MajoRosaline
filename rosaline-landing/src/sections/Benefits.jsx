@@ -24,14 +24,25 @@ const benefits = [
 ]
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (index) => ({ opacity: 1, y: 0, transition: { delay: index * 0.1 } })
+  hidden: { opacity: 0, y: 50, scale: 0.8 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: index * 0.1,
+      duration: 0.6,
+      type: 'spring',
+      stiffness: 100,
+      damping: 10
+    }
+  })
 }
 
 export default function Benefits() {
   return (
-    <section id="beneficios" className="bg-white py-16 sm:py-20">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 text-center sm:gap-12 sm:px-6">
+    <section id="beneficios" className="bg-white py-12 sm:py-16 md:py-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 text-center sm:gap-10 md:gap-12 sm:px-6">
         <div className="space-y-4">
           <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Beneficios</p>
           <h2 className="text-2xl sm:text-4xl">Cuidamos tu cabello con propósito</h2>
@@ -39,11 +50,11 @@ export default function Benefits() {
             Cada tratamiento Rosaline Olavarría está diseñado para nutrir profundamente, potenciar la luminosidad natural y proteger la fibra capilar.
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit, index) => (
             <Motion.div
               key={benefit.title}
-              className="rounded-3xl bg-cream/70 p-6 text-left shadow-[0_20px_40px_-20px_rgba(246,107,64,0.25)] sm:p-8"
+              className="rounded-3xl bg-cream/70 p-5 text-left shadow-[0_20px_40px_-20px_rgba(246,107,64,0.25)] sm:p-6 md:p-8"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-50px' }}

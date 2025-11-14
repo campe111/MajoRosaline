@@ -287,7 +287,7 @@ const cardVariants = {
   visible: (index) => ({ opacity: 1, y: 0, transition: { delay: index * 0.15 } })
 }
 
-function ResponsivePicture({ data, alt, pictureClassName, imgClassName, loading = 'lazy', fallbackSrc = logoImg }) {
+function ResponsivePicture({ data, alt, pictureClassName, imgClassName, loading = 'lazy', fallbackSrc = logoImg, onLoad }) {
   if (!data || typeof data === 'string') {
     return (
       <img
@@ -296,6 +296,7 @@ function ResponsivePicture({ data, alt, pictureClassName, imgClassName, loading 
         loading={loading}
         decoding="async"
         className={imgClassName ?? pictureClassName}
+        onLoad={onLoad}
       />
     )
   }
@@ -309,6 +310,7 @@ function ResponsivePicture({ data, alt, pictureClassName, imgClassName, loading 
         loading={loading}
         decoding="async"
         className={imgClassName ?? pictureClassName}
+        onLoad={onLoad}
       />
     )
   }
@@ -328,13 +330,34 @@ function ResponsivePicture({ data, alt, pictureClassName, imgClassName, loading 
         loading={loading}
         decoding="async"
         className={imgClassName ?? pictureClassName}
+        onLoad={onLoad}
       />
     </picture>
   )
 }
 
+function ImageSkeleton() {
+  return (
+    <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-rose/10 via-cream/30 to-white">
+      <div className="h-full w-full bg-gradient-to-r from-transparent via-white/30 to-transparent" 
+           style={{
+             animation: 'shimmer 2s infinite',
+             backgroundSize: '200% 100%',
+             backgroundPosition: '-200% 0'
+           }} />
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 function ProductCard({ product, index, onImageClick, getImageData, getThumbnailData }) {
   const [activeImage, setActiveImage] = useState(0)
+  const [imageLoading, setImageLoading] = useState(true)
 
   const currentImageName = product.images?.[activeImage]
   const currentImageData = currentImageName ? getImageData(currentImageName) : null
@@ -343,54 +366,97 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
     onImageClick(currentImageName ?? null, product)
   }
 
+  const handleImageLoad = () => {
+    setImageLoading(false)
+  }
+
+  // Reset loading state when image changes
+  useEffect(() => {
+    setImageLoading(true)
+  }, [activeImage])
+
   return (
     <Motion.article
-      className="group flex flex-col overflow-hidden rounded-3xl border border-rose/20 bg-white shadow-[0_40px_60px_-40px_rgba(251,96,102,0.35)]"
+      className="group flex flex-col overflow-hidden rounded-3xl border border-rose/20 bg-white shadow-[0_40px_60px_-40px_rgba(251,96,102,0.35)] transition-all duration-300 hover:shadow-[0_50px_80px_-40px_rgba(251,96,102,0.5)] hover:border-rose/40"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
       custom={index}
       variants={cardVariants}
+      whileHover={{ y: -4 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       <Motion.button
         type="button"
-        className="relative h-60 w-full overflow-hidden bg-gradient-to-br from-rose/40 via-cream to-white sm:h-56"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 1.08 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+        className="relative h-64 w-full overflow-hidden bg-gradient-to-br from-rose/20 via-cream/50 to-white sm:h-72 md:h-80 lg:h-96 cursor-pointer"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         onClick={handleModalOpen}
       >
-        <ResponsivePicture
-          data={currentImageData}
-          alt={product.imageAlt}
-          fallbackSrc={logoImg}
-          pictureClassName="block h-full w-full"
-          imgClassName="h-full w-full object-cover"
-          loading={index < 3 ? 'eager' : 'lazy'}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-terra/15 via-transparent to-transparent" />
+        {imageLoading && <ImageSkeleton />}
+        <Motion.div
+          className="h-full w-full"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ResponsivePicture
+            data={currentImageData}
+            alt={product.imageAlt}
+            fallbackSrc={logoImg}
+            pictureClassName="block h-full w-full"
+            imgClassName={`h-full w-full object-contain transition-all duration-500 ${imageLoading ? 'opacity-0' : 'opacity-100 group-hover:brightness-110'}`}
+            loading={index < 3 ? 'eager' : 'lazy'}
+            onLoad={handleImageLoad}
+          />
+        </Motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="rounded-full bg-white/90 p-3 shadow-lg backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-rose">
+              <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+        </div>
         <span className="sr-only">Ver {product.name}</span>
       </Motion.button>
-      <div className="flex flex-1 flex-col gap-4 p-6 sm:p-8">
+      <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6 md:p-8">
         <div>
-          <h3 className="text-xl sm:text-2xl">{product.name}</h3>
-          <p className="mt-2 text-xs uppercase tracking-[0.3em] text-rose/70 sm:text-sm">
+          <Motion.h3 
+            className="text-xl sm:text-2xl"
+            whileHover={{ x: 4 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+          >
+            {product.name}
+          </Motion.h3>
+          <Motion.p 
+            className="mt-2 text-xs uppercase tracking-[0.3em] text-rose/70 sm:text-sm"
+            initial={{ opacity: 0.7 }}
+            whileHover={{ opacity: 1, scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
             {product.category}
+          </Motion.p>
+          <p className="mt-3 text-sm leading-relaxed text-terra/80 sm:text-base group-hover:text-terra transition-colors duration-300">
+            {product.description}
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-terra/80 sm:text-base">{product.description}</p>
         </div>
         {product.images && product.images.length > 1 && (
           <div className="flex gap-3">
             {product.images.map((image, imageIndex) => (
-              <button
+              <Motion.button
                 key={`${product.name}-${image}`}
                 type="button"
-                className={`h-14 w-14 overflow-hidden rounded-2xl border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose/50 sm:h-16 sm:w-16 ${
+                className={`h-12 w-12 overflow-hidden rounded-2xl border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-rose/50 sm:h-14 sm:w-14 md:h-16 md:w-16 ${
                   imageIndex === activeImage
-                    ? 'border-rose ring-rose/40'
+                    ? 'border-rose ring-2 ring-rose/40 shadow-md'
                     : 'border-rose/20 hover:border-rose/60'
                 }`}
                 onClick={() => setActiveImage(imageIndex)}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <ResponsivePicture
                   data={getThumbnailData(image)}
@@ -399,7 +465,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
                   pictureClassName="block h-full w-full"
                   imgClassName="h-full w-full object-cover"
                 />
-              </button>
+              </Motion.button>
             ))}
           </div>
         )}
@@ -458,7 +524,7 @@ export default function Products() {
             Filtrá por nombre, categoría o beneficio para encontrar el tratamiento ideal.
           </p>
         </div>
-        <div className="mx-auto mt-8 flex w-full max-w-xl items-center gap-3 rounded-full border border-rose/30 bg-white/70 px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-rose/40">
+        <div className="mx-auto mt-8 flex w-full max-w-xl items-center gap-3 rounded-full border border-rose/30 bg-white/70 px-4 py-2.5 sm:py-3 shadow-sm focus-within:ring-2 focus-within:ring-rose/40">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -477,7 +543,7 @@ export default function Products() {
             className="w-full bg-transparent text-sm text-terra placeholder:text-terra/50 focus:outline-none sm:text-base"
           />
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3 md:gap-8">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, index) => (
               <ProductCard
@@ -506,7 +572,7 @@ export default function Products() {
             onClick={handleCloseModal}
           >
             <Motion.div
-              className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)]"
+              className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)] mx-4"
               initial={{ scale: 0.92, opacity: 0.6 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
