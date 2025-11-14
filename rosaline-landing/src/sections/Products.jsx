@@ -49,10 +49,10 @@ const productFile = (number) => `producto-${number}.jpg`
 const products = [
   {
     name: 'Caviar Fidelite',
-    description: 'MÁSCARA CAVIAR HIDRO-NUTRITIVA 250g. SUAVIDAD Y REPARACIÓN INTENSIVAS. Tratamiento capilar anti-age con extracto de caviar, D-Pantenol y proteínas de trigo, seda, soja y arroz. Combate y retrasa el envejecimiento capilar. Devuelve al cabello la vitalidad perdida otorgando brillo, suavidad e hidratación. Contiene filtros UV que protegen al cabello de los rayos ultravioleta.',
+    description: 'Máscara Caviar Hidro-Nutritiva 250g. Tratamiento capilar anti-age con extracto de caviar, D-Pantenol y proteínas vegetales. Repara, hidrata y protege del sol, devolviendo brillo y suavidad al cabello.',
     imageAlt: 'Caviar Fidelite',
     images: [productFile(1), productFile('1.1')],
-    category: 'Mascarillas'
+    category: 'Mascarilla Capilar'
   },
   {
     name: 'Cepillo Dompell Pocket',
@@ -66,7 +66,7 @@ const products = [
     description: 'Shampoo y Mask BEKIM Argán 4 oils fue formulado para cabellos deshidratados. La combinación de 4 aceites esenciales, principalmente el argán oil, devuelven al cabello sedosidad, suavidad, brillo y la naturalidad de un cabello sano. Contiene filtro solar.',
     imageAlt: 'Keratina Reestructurante',
     images: [productFile(5)],
-    category: 'Keratinas'
+    category: 'Shampoo'
   },
   {
     name: 'Coloracion',
@@ -87,56 +87,56 @@ const products = [
     description: 'Es un producto ideal para lograr crear un peinado de alta duración con mayor capacidad de moldeado, modelado y fijación. Contiene un activo especial (compuesto por aminoácidos, vitaminas y fitoesteroles) que ayuda a fortalecer y engrosar el cabello desde la raíz. Rulos perfectos por más tiempo. Tu estilo de peinado súper duradero.Otorga brillo extremo dando sensación de efecto húmedo. Personaliza tu estilo. Modela tu peinado a tu estilo. No engrasa ni deja polvillo.',
     imageAlt: 'Gel fijador',
     images: [productFile(8)],
-    category: 'Gel fijador'
+    category: 'Gel Capilar'
   },
   {
-    name: 'Ampollas Ultra Repair',
+    name: 'Shampoo',
     description: 'Concentrado nutritivo para shock de reparación y brillo inmediato en cabellos sensibilizados.',
     imageAlt: 'Ampollas Ultra Repair',
     images: [productFile(9)],
-    category: 'Ampollas'
+    category: 'Shampoo'
   },
   {
-    name: 'Ampollas Ultra Repair Plus',
+    name: 'Mascarilla karseell',
     description: 'Refuerzo de proteínas y aminoácidos para reconstruir la fibra en minutos.',
     imageAlt: 'Ampollas Ultra Repair Plus',
     images: [productFile(10)],
-    category: 'Ampollas'
+    category: 'Mascarilla Capilar'
   },
   {
-    name: 'Línea Styling Control',
-    description: 'Spray de styling para texturizar y definir terminaciones suaves.',
+    name: 'Shampoo Fidelité',
+    description: 'Es un tratamiento anti-age para cabellos secos y castigados.',
     imageAlt: 'Producto Styling',
     images: [productFile(11)],
-    category: 'Styling'
+    category: 'Shampoo'
   },
   {
-    name: 'Línea Styling Shine',
-    description: 'Spray de brillo instantáneo con filtro protector para cabellos secos.',
+    name: 'Baño de crema',
+    description: 'El baño de Crema pH Ácido Frilayp es el complemento ideal para finalizar trabajos profesionales. Su pH Ácido tiene un efecto sobre la cutícula, haciendo que esta se cierre, favoreciendo la duración de estos tratamientos',
     imageAlt: 'Spray de brillo',
     images: [productFile(12)],
-    category: 'Styling'
+    category: 'Baño de Crema'
   },
   {
-    name: 'Tratamiento Nutritivo Intenso',
-    description: 'Máscara nutritiva ideal para cabellos gruesos y sensibilizados.',
+    name: 'Crema de Peinar Argan',
+    description: 'Para todo tipo de cabellos. Con aceite virgen de Argán, filtro UV y efecto anti-frizz. Repara, hidrata y devuelve brillo y suavidad, combatiendo el envejecimiento capilar.',
     imageAlt: 'Máscara nutritiva',
     images: [productFile(13)],
-    category: 'Máscaras'
+    category: 'Crema de Peinar'
   },
   {
-    name: 'Tratamiento Nutritivo Ligero',
-    description: 'Textura ligera que hidrata sin apelmazar cabellos finos.',
+    name: 'Shampoo WProfessional: Nutre y Repara',
+    description: 'Shampoo de lavado cremoso con filtro contra la acción de los rayos UV.',
     imageAlt: 'Máscara ligera',
     images: [productFile(14), productFile('14.1'), productFile('14.2')],
-    category: 'Máscaras'
+    category: 'Shampoo'
   },
   {
-    name: 'Blend Anti-frizz',
-    description: 'Fórmula antifrizz para cabellos ondulados con tendencia al encrespado.',
+    name: 'Baño de Crema Coco y Argan',
+    description: 'El baño de crema Coco Frilayp, contiene aceite de coco que proporciona emoliencia al cabello, viéndose esta reflejada en el brillo y suavidad del mismo.',
     imageAlt: 'Blend anti-frizz',
     images: [productFile(15)],
-    category: 'Tratamientos Leave-in'
+    category: 'Baño de Crema'
   },
   {
     name: 'Blend Termoprotector',
@@ -623,8 +623,18 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
 export default function Products() {
   const [modalData, setModalData] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('')
+
+  // Obtener todas las categorías únicas y ordenarlas
+  const categories = [...new Set(products.map(p => p.category))].sort()
 
   const filteredProducts = products.filter((product) => {
+    // Filtro por categoría
+    if (selectedCategory && product.category !== selectedCategory) {
+      return false
+    }
+    
+    // Filtro por búsqueda de texto
     const term = searchTerm.trim().toLowerCase()
     if (!term) return true
     const haystack = [product.name, product.description, product.category].join(' ').toLowerCase()
@@ -666,24 +676,58 @@ export default function Products() {
             Filtrá por nombre, categoría o beneficio para encontrar el tratamiento ideal.
           </p>
         </div>
-        <div className="mx-auto mt-8 flex w-full max-w-xl items-center gap-3 rounded-full border border-rose/30 bg-white/70 px-4 py-2.5 sm:py-3 shadow-sm focus-within:ring-2 focus-within:ring-rose/40">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className="h-5 w-5 text-rose/70"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35m0 0a7.5 7.5 0 1 0-10.607-10.607 7.5 7.5 0 0 0 10.607 10.607Z" />
-          </svg>
-          <input
-            type="search"
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-            placeholder="Buscar producto, categoría o beneficio..."
-            className="w-full bg-transparent text-sm text-terra placeholder:text-terra/50 focus:outline-none sm:text-base"
-          />
+        <div className="mx-auto mt-8 flex w-full max-w-4xl flex-col gap-4 sm:flex-row sm:items-center">
+          {/* Buscador */}
+          <div className="flex flex-1 items-center gap-3 rounded-full border border-rose/30 bg-white/70 px-4 py-2.5 sm:py-3 shadow-sm focus-within:ring-2 focus-within:ring-rose/40">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              className="h-5 w-5 flex-shrink-0 text-rose/70"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35m0 0a7.5 7.5 0 1 0-10.607-10.607 7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+            <input
+              type="search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Buscar producto, categoría o beneficio..."
+              className="w-full bg-transparent text-sm text-terra placeholder:text-terra/50 focus:outline-none sm:text-base"
+            />
+          </div>
+          
+          {/* Desplegable de categorías */}
+          <div className="relative">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full appearance-none rounded-full border border-rose/30 bg-white/70 px-4 py-2.5 pr-10 text-sm text-terra shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-rose/40 sm:w-auto sm:min-w-[200px] sm:py-3 sm:text-base"
+              aria-label="Filtrar por categoría"
+            >
+              <option value="">Todas las categorías</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-rose/70">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </div>
+          </div>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
           {filteredProducts.length > 0 ? (
@@ -699,7 +743,9 @@ export default function Products() {
             ))
           ) : (
             <div className="col-span-full rounded-3xl border border-rose/20 bg-white/70 px-6 py-12 text-center text-sm text-terra/70 sm:text-base">
-              No encontramos coincidencias para “{searchTerm}”. Probá con otro término o categoría.
+              {searchTerm || selectedCategory
+                ? `No encontramos coincidencias${searchTerm ? ` para "${searchTerm}"` : ''}${selectedCategory ? ` en la categoría "${selectedCategory}"` : ''}. Probá con otro término o categoría.`
+                : 'No hay productos disponibles.'}
             </div>
           )}
         </div>
