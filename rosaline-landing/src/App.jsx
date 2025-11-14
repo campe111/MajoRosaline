@@ -299,7 +299,12 @@ export default function App() {
       
       {/* Botón Inicio flotante en la parte inferior */}
       {scrolled && (
-        <div className="fixed left-0 right-0 bottom-6 z-40 flex items-center justify-center pointer-events-none sm:bottom-8">
+        <Motion.div
+          className="fixed inset-x-0 bottom-6 z-40 flex items-center justify-center pointer-events-none sm:bottom-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
           <Motion.button
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -322,10 +327,11 @@ export default function App() {
             </svg>
             Inicio
           </Motion.button>
-        </div>
+        </Motion.div>
       )}
       {bannerVisible && <CookieConsentBanner onConsent={handleConsent} />}
       {hasConsent && <Analytics />}
     </div>
   )
 }
+
