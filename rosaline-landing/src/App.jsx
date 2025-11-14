@@ -302,9 +302,11 @@ export default function App() {
         <Motion.button
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
-            handleNavigate('#inicio', null)
+            if (window.history?.replaceState) {
+              window.history.replaceState(null, '', '#inicio')
+            }
           }}
-          className="fixed left-1/2 bottom-8 -translate-x-1/2 z-40 flex items-center justify-center rounded-2xl bg-white/60 backdrop-blur-md border-2 border-rose/40 px-8 py-4 text-rose font-semibold uppercase tracking-[0.25em] text-sm shadow-xl shadow-rose/25 transition-all hover:bg-white/85 hover:border-rose/60 hover:shadow-2xl hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50 sm:px-10 sm:py-4"
+          className="fixed left-1/2 bottom-8 -translate-x-1/2 z-40 flex items-center justify-center rounded-2xl bg-white/60 backdrop-blur-md border-2 border-rose/40 px-6 py-3 text-rose font-semibold uppercase tracking-[0.25em] text-xs shadow-xl shadow-rose/25 transition-all hover:bg-white/85 hover:border-rose/60 hover:shadow-2xl hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50 sm:px-8 sm:py-4 sm:text-sm whitespace-nowrap"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 0.8, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
