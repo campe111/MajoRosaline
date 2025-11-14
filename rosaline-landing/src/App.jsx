@@ -299,28 +299,30 @@ export default function App() {
       
       {/* Botón Inicio flotante en la parte inferior */}
       {scrolled && (
-        <Motion.button
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-            if (window.history?.replaceState) {
-              window.history.replaceState(null, '', '#inicio')
-            }
-          }}
-          className="fixed left-1/2 bottom-8 -translate-x-1/2 z-40 flex items-center justify-center rounded-2xl bg-white/60 backdrop-blur-md border-2 border-rose/40 px-6 py-3 text-rose font-semibold uppercase tracking-[0.25em] text-xs shadow-xl shadow-rose/25 transition-all hover:bg-white/85 hover:border-rose/60 hover:shadow-2xl hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50 sm:px-8 sm:py-4 sm:text-sm whitespace-nowrap"
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 0.8, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          whileHover={{ opacity: 1, scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          aria-label="Volver al inicio"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 mr-2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-          Inicio
-        </Motion.button>
+        <div className="fixed left-0 right-0 bottom-6 z-40 flex items-center justify-center pointer-events-none sm:bottom-8">
+          <Motion.button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              if (window.history?.replaceState) {
+                window.history.replaceState(null, '', '#inicio')
+              }
+            }}
+            className="flex items-center justify-center rounded-2xl bg-white/60 backdrop-blur-md border-2 border-rose/40 px-5 py-2.5 text-rose font-semibold uppercase tracking-[0.2em] text-xs shadow-xl shadow-rose/25 transition-all hover:bg-white/85 hover:border-rose/60 hover:shadow-2xl hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50 pointer-events-auto sm:px-8 sm:py-3 sm:text-sm sm:tracking-[0.25em] whitespace-nowrap"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 0.8, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            whileHover={{ opacity: 1, scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            aria-label="Volver al inicio"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 mr-1.5 sm:h-4 sm:w-4 sm:mr-2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Inicio
+          </Motion.button>
+        </div>
       )}
       {bannerVisible && <CookieConsentBanner onConsent={handleConsent} />}
       {hasConsent && <Analytics />}
