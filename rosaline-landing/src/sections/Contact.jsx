@@ -81,7 +81,7 @@ export default function Contact() {
       setFormData({ name: '', email: '', message: '' })
       setTouched({})
       setTimeout(() => setSubmitStatus(null), 5000)
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
       setTimeout(() => setSubmitStatus(null), 5000)
     } finally {

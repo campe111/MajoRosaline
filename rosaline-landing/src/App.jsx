@@ -7,7 +7,6 @@ import Benefits from './sections/Benefits'
 import Products from './sections/Products'
 import Contact from './sections/Contact'
 import Button from './components/Button'
-import logo from './assets/images/logo.jpg'
 
 const navigation = [
   { label: 'Inicio', href: '#inicio' },
