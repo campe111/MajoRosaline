@@ -455,7 +455,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
 
   return (
     <Motion.article
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-cream/20 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08),4px_8px_16px_-4px_rgba(251,96,102,0.15)] transition-all duration-500 hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.12),8px_12px_24px_-4px_rgba(251,96,102,0.25)] border border-transparent hover:border-rose/20"
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-cream/20 transition-all duration-500 border border-transparent hover:border-rose/20"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
