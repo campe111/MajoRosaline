@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         display: ["Playfair Display", "serif"],
         body: ["Open Sans", "sans-serif"],
-        changa: ["Changa One", "cursive"]
+        cinzel: ["Cinzel", "serif"]
       }
     }
   },
