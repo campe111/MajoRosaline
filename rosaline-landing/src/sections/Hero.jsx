@@ -27,6 +27,14 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           variants={heroVariants}
         >
+          {/* Logo solo en mobile, debajo del header */}
+          <div className="mb-6 flex justify-center sm:hidden">
+            <img
+              src={logo}
+              alt="Logo Rosaline Olavarría"
+              className="h-20 w-20 rounded-full border-2 border-rose/30 object-cover shadow-lg"
+            />
+          </div>
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-rose/30 px-4 py-2 text-[11px] uppercase tracking-[0.35em] text-rose/80">
             Rosaline Olavarría
           </p>

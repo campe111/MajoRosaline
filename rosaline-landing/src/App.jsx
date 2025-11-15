@@ -115,7 +115,7 @@ export default function App() {
             <a
               href="#inicio"
               onClick={(event) => handleNavigate('#inicio', event)}
-              className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-rose transition hover:text-rose/90 sm:gap-3 sm:text-base sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]"
+              className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-rose transition hover:text-rose/90 sm:justify-start sm:gap-3 sm:text-base sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]"
             >
               {/* <img
                 src={logo}
