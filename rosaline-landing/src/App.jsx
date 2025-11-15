@@ -111,11 +111,11 @@ export default function App() {
         <div className={`border-b border-rose/20 bg-white/85 backdrop-blur transition-shadow duration-300 ${
           scrolled ? 'shadow-lg shadow-rose/10' : ''
         }`}>
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6 sm:py-4 lg:py-5">
+          <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6 sm:py-4 lg:py-5">
             <a
               href="#inicio"
               onClick={(event) => handleNavigate('#inicio', event)}
-              className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-rose transition hover:text-rose/90 sm:justify-start sm:gap-3 sm:text-base sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-rose transition hover:text-rose/90 sm:relative sm:left-0 sm:top-0 sm:translate-x-0 sm:translate-y-0 sm:justify-start sm:gap-3 sm:text-base sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]"
             >
               {/* <img
                 src={logo}
@@ -151,7 +151,7 @@ export default function App() {
             </div>
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-full border border-rose/40 p-2 text-rose transition-colors hover:bg-rose/10 sm:hidden"
+              className="relative z-10 inline-flex items-center justify-center rounded-full border border-rose/40 p-2 text-rose transition-colors hover:bg-rose/10 sm:hidden"
               aria-label="Abrir menú"
               onClick={() => setMobileOpen((prev) => !prev)}
             >

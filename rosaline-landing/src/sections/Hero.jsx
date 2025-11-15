@@ -27,17 +27,14 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           variants={heroVariants}
         >
-          {/* Logo solo en mobile, debajo del header */}
+          {/* Imagen de Rosaline solo en mobile, debajo del header */}
           <div className="mb-6 flex justify-center sm:hidden">
-            <img
-              src={logo}
-              alt="Logo Rosaline Olavarría"
-              className="h-20 w-20 rounded-full border-2 border-rose/30 object-cover shadow-lg"
-            />
+            <div className="relative flex h-48 w-48 items-center justify-center overflow-hidden rounded-[24px] border border-white/70 bg-gradient-to-br from-white via-cream to-rose/20 shadow-[0_45px_70px_-45px_rgba(47,47,47,0.45)]">
+              <div className="absolute inset-3 rounded-[20px] border border-white/40 bg-white/40 backdrop-blur-sm" />
+              <img src={logo} alt="Rosaline Olavarría" className="relative z-10 h-full w-full rounded-[20px] object-cover" />
+              <div className="absolute inset-0 rounded-[24px] bg-gradient-to-t from-terra/15 via-transparent to-transparent" />
+            </div>
           </div>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-rose/30 px-4 py-2 text-[11px] uppercase tracking-[0.35em] text-rose/80">
-            Rosaline Olavarría
-          </p>
           <h1 className="text-3xl leading-tight text-rose sm:text-4xl md:text-5xl lg:text-6xl">
             Belleza capilar consciente con resultados profesionales
           </h1>
