@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-cream pt-2 pb-16 sm:py-28 lg:py-32"
+      className="relative overflow-hidden bg-cream pt-2 pb-16 sm:pt-0 sm:pb-28 lg:pt-0 lg:pb-32"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,96,102,0.16),_transparent_65%)]" />
