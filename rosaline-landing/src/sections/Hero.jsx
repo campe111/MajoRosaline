@@ -19,9 +19,9 @@ export default function Hero() {
         <div className="absolute -right-1/3 bottom-[-20%] h-[320px] w-[320px] rounded-full bg-cream/70 blur-2xl sm:right-[-10%]" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2243%22%20height%3D%2243%22%20viewBox%3D%220%200%2043%2043%22%20fill%3D%22none%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0.5%2021.5C0.5%2033.9264%2010.5736%2044%2023%2044C35.4264%2044%2045.5%2033.9264%2045.5%2021.5C45.5%209.07359%2035.4264%20-1%2023%20-1C10.5736%20-1%200.5%209.07359%200.5%2021.5Z%22%20stroke%3D%22rgba(246,107,64,0.08)%22%20/%3E%3C/svg%3E')] opacity-70" />
       </div>
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-4 sm:grid-cols-2 sm:gap-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <Motion.div
-          className="max-w-xl text-center sm:max-w-none sm:text-left"
+          className="mx-auto max-w-xl text-center sm:max-w-none sm:text-left"
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -49,16 +49,6 @@ export default function Hero() {
               Ver beneficios
             </Button>
           </div>
-        </Motion.div>
-        <Motion.div
-          className="relative mx-auto flex h-64 w-64 items-center justify-center overflow-hidden rounded-[32px] border border-white/70 bg-gradient-to-br from-white via-cream to-rose/20 shadow-[0_45px_70px_-45px_rgba(47,47,47,0.45)] sm:h-80 sm:w-80 md:h-[26rem] md:w-[26rem] lg:h-[28rem] lg:w-[28rem]"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-        >
-          <div className="absolute inset-4 rounded-[28px] border border-white/40 bg-white/40 backdrop-blur-sm" />
-          <img src={logo} alt="Ilustración Rosaline Cosmetica Capilar" className="relative z-10 h-full w-full rounded-[28px] object-cover" />
-          <div className="absolute inset-0 rounded-[32px] bg-gradient-to-t from-terra/15 via-transparent to-transparent" />
         </Motion.div>
       </div>
     </section>
