@@ -22,6 +22,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const storedConsent = window.localStorage.getItem('rosaline-consent')
@@ -30,6 +31,17 @@ export default function App() {
     } else {
       setBannerVisible(true)
     }
+  }, [])
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
   useEffect(() => {
@@ -306,12 +318,12 @@ export default function App() {
               window.history.replaceState(null, '', '#inicio')
             }
           }}
-          className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-white/80 backdrop-blur-md border-2 border-rose/40 text-rose shadow-xl shadow-rose/25 transition-all hover:bg-white hover:border-rose/60 hover:shadow-2xl hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50 sm:right-8 sm:bottom-8 sm:h-14 sm:w-14"
+          className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-white/80 backdrop-blur-md border-2 border-rose/40 text-rose shadow-xl shadow-rose/25 transition-all sm:right-8 sm:bottom-8 sm:h-14 sm:w-14 sm:hover:bg-white sm:hover:border-rose/60 sm:hover:shadow-2xl sm:hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          whileHover={{ scale: 1.1, y: -4 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={!isMobile ? { scale: 1.1, y: -4 } : {}}
+          whileTap={!isMobile ? { scale: 0.95 } : {}}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           aria-label="Volver al inicio"
         >

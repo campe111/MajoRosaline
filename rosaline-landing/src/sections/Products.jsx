@@ -455,7 +455,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
 
   return (
     <Motion.article
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-cream/20 shadow-sm transition-all duration-500 hover:shadow-2xl hover:shadow-rose/15 border border-transparent hover:border-rose/20"
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-cream/20 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08),4px_8px_16px_-4px_rgba(251,96,102,0.15)] transition-all duration-500 hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.12),8px_12px_24px_-4px_rgba(251,96,102,0.25)] border border-transparent hover:border-rose/20"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
@@ -661,6 +661,18 @@ export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState('')
   const [cart, setCart] = useState([])
   const [showCart, setShowCart] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Número de WhatsApp (formato: 5491123456789 sin + ni espacios)
   const whatsappNumber = '+5492284578166' 
@@ -1060,12 +1072,12 @@ export default function Products() {
       {cart.length > 0 && (
         <Motion.button
           onClick={() => setShowCart(!showCart)}
-          className="fixed bottom-[88px] right-6 z-40 h-14 w-14 rounded-full bg-gradient-to-r from-rose to-rose/90 text-white shadow-2xl hover:shadow-rose/40 transition-all flex items-center justify-center sm:right-8 sm:bottom-[104px]"
+          className="fixed bottom-[88px] right-6 z-40 h-14 w-14 rounded-full bg-gradient-to-r from-rose to-rose/90 text-white shadow-2xl transition-all flex items-center justify-center sm:right-8 sm:bottom-[104px] sm:hover:shadow-rose/40"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={!isMobile ? { scale: 1.1 } : {}}
+          whileTap={!isMobile ? { scale: 0.95 } : {}}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           aria-label={showCart ? "Cerrar carrito" : "Ver carrito"}
         >
