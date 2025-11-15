@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-cream pt-4 pb-16 sm:py-28 lg:py-32"
+      className="relative overflow-hidden bg-cream pt-2 pb-16 sm:py-28 lg:py-32"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,96,102,0.16),_transparent_65%)]" />
@@ -28,8 +28,8 @@ export default function Hero() {
           variants={heroVariants}
         >
           {/* Imagen de Rosaline solo en mobile, debajo del header */}
-          <div className="mb-4 mt-2 flex justify-center sm:hidden">
-            <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden rounded-[28px] border border-white/70 bg-gradient-to-br from-white via-cream to-rose/20 shadow-[0_45px_70px_-45px_rgba(47,47,47,0.45)]">
+          <div className="mb-4 flex justify-center sm:hidden">
+            <div className="relative flex h-[300px] w-[300px] items-center justify-center overflow-hidden rounded-[28px] border border-white/70 bg-gradient-to-br from-white via-cream to-rose/20 shadow-[0_45px_70px_-45px_rgba(47,47,47,0.45)]">
               <div className="absolute inset-3 rounded-[24px] border border-white/40 bg-white/40 backdrop-blur-sm" />
               <img src={logo} alt="Rosaline Olavarría" className="relative z-10 h-full w-full rounded-[24px] object-cover" />
               <div className="absolute inset-0 rounded-[28px] bg-gradient-to-t from-terra/15 via-transparent to-transparent" />
