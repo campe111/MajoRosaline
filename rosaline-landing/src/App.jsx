@@ -115,7 +115,7 @@ export default function App() {
             <a
               href="#inicio"
               onClick={(event) => handleNavigate('#inicio', event)}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-rose transition hover:text-rose/90 sm:relative sm:left-0 sm:top-0 sm:translate-x-0 sm:translate-y-0 sm:justify-start sm:gap-3 sm:text-base sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-rose transition hover:text-rose/90 whitespace-nowrap sm:relative sm:left-0 sm:top-0 sm:translate-x-0 sm:translate-y-0 sm:justify-start sm:gap-3 sm:text-base sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]"
             >
               {/* <img
                 src={logo}
