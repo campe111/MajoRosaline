@@ -455,7 +455,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
 
   return (
     <Motion.article
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-cream/20 transition-all duration-500 border border-transparent hover:border-rose/20"
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-white transition-all duration-500 border border-rose/10 hover:border-rose/20"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
@@ -510,7 +510,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
             </svg>
           </div>
         </div>
-        {/* Flechas de navegación para desktop */}
+        {/* Flechas de navegación para slide */}
         {hasMultipleImages && (
           <>
             <button
@@ -519,7 +519,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
                 e.stopPropagation()
                 setActiveImage((prev) => (prev - 1 + product.images.length) % product.images.length)
               }}
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 hidden sm:flex items-center justify-center h-10 w-10 rounded-full bg-white/80 backdrop-blur-sm text-rose shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-10 w-10 rounded-full bg-white/90 backdrop-blur-sm text-rose border border-rose/20 transition-all duration-300 hover:bg-white hover:scale-110"
               aria-label="Imagen anterior"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
@@ -532,7 +532,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
                 e.stopPropagation()
                 setActiveImage((prev) => (prev + 1) % product.images.length)
               }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 hidden sm:flex items-center justify-center h-10 w-10 rounded-full bg-white/80 backdrop-blur-sm text-rose shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-10 w-10 rounded-full bg-white/90 backdrop-blur-sm text-rose border border-rose/20 transition-all duration-300 hover:bg-white hover:scale-110"
               aria-label="Imagen siguiente"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
@@ -587,33 +587,6 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
             {product.description}
           </p>
         </div>
-        {product.images && product.images.length > 1 && (
-          <div className="flex gap-2.5 overflow-x-auto pb-1 scrollbar-hide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {product.images.map((image, imageIndex) => (
-              <Motion.button
-                key={`${product.name}-${image}`}
-                type="button"
-                className={`h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-rose/50 sm:h-16 sm:w-16 ${
-                  imageIndex === activeImage
-                    ? 'border-rose shadow-md shadow-rose/20 scale-105'
-                    : 'border-rose/20 hover:border-rose/50 opacity-70 hover:opacity-100'
-                }`}
-                onClick={() => setActiveImage(imageIndex)}
-                whileHover={{ scale: 1.08, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-              >
-                <ResponsivePicture
-                  data={getThumbnailData(image)}
-                  alt={`${product.name} ${imageIndex + 1}`}
-                  fallbackSrc={logoImg}
-                  pictureClassName="block h-full w-full"
-                  imgClassName="h-full w-full object-cover"
-                />
-              </Motion.button>
-            ))}
-          </div>
-        )}
         <div className="mt-auto pt-5 border-t border-rose/10 flex flex-col gap-4">
           <div className="flex items-center justify-between text-xs text-terra/60 sm:text-sm">
             <span className="flex items-center gap-2 group/item">
