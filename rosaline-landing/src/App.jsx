@@ -297,37 +297,28 @@ export default function App() {
         </div>
       </footer>
       
-      {/* Botón Inicio flotante en la parte inferior */}
+      {/* Botón circular flotante para volver arriba */}
       {scrolled && (
-        <Motion.div
-          className="fixed inset-x-0 bottom-6 z-40 flex items-center justify-center pointer-events-none sm:bottom-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        <Motion.button
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            if (window.history?.replaceState) {
+              window.history.replaceState(null, '', '#inicio')
+            }
+          }}
+          className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-white/80 backdrop-blur-md border-2 border-rose/40 text-rose shadow-xl shadow-rose/25 transition-all hover:bg-white hover:border-rose/60 hover:shadow-2xl hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50 sm:right-8 sm:bottom-8 sm:h-14 sm:w-14"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          whileHover={{ scale: 1.1, y: -4 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          aria-label="Volver al inicio"
         >
-          <Motion.button
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-              if (window.history?.replaceState) {
-                window.history.replaceState(null, '', '#inicio')
-              }
-            }}
-            className="flex items-center justify-center rounded-2xl bg-white/60 backdrop-blur-md border-2 border-rose/40 px-5 py-2.5 text-rose font-semibold uppercase tracking-[0.2em] text-xs shadow-xl shadow-rose/25 transition-all hover:bg-white/85 hover:border-rose/60 hover:shadow-2xl hover:shadow-rose/35 focus:outline-none focus:ring-2 focus:ring-rose/50 pointer-events-auto sm:px-8 sm:py-3 sm:text-sm sm:tracking-[0.25em] whitespace-nowrap"
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 0.8, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileHover={{ opacity: 1, scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            aria-label="Volver al inicio"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 mr-1.5 sm:h-4 sm:w-4 sm:mr-2">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-            Inicio
-          </Motion.button>
-        </Motion.div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 sm:h-7 sm:w-7">
+            <path d="m18 15-6-6-6 6" />
+          </svg>
+        </Motion.button>
       )}
       {bannerVisible && <CookieConsentBanner onConsent={handleConsent} />}
       {hasConsent && <Analytics />}
