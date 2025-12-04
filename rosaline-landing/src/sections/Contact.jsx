@@ -90,7 +90,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contacto" className="relative overflow-hidden bg-gradient-to-b from-white via-cream/60 to-white py-16 sm:py-[5.5rem]">
+    <section id="contacto" className="relative overflow-hidden bg-gradient-to-b from-white via-cream/60 to-white pt-8 pb-16 sm:pt-10 sm:pb-[5.5rem]">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(255,239,193,0.35),_transparent_60%)]" />
         <div className="absolute left-1/2 top-12 h-72 w-72 -translate-x-1/2 rounded-full bg-rose/10 blur-3xl sm:left-[10%] sm:top-1/3" />
@@ -98,15 +98,14 @@ export default function Contact() {
       </div>
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
         <div className="rounded-[34px] border border-rose/15 bg-white/70 px-4 py-6 shadow-[0_50px_80px_-60px_rgba(47,47,47,0.6)] backdrop-blur sm:px-8 sm:py-8 md:px-10 md:py-10">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-            <div className="space-y-6">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 xl:gap-12">
+            <div className="space-y-5 sm:space-y-6">
               <p className="inline-flex items-center gap-2 rounded-full border border-rose/20 px-4 py-2 text-[11px] uppercase tracking-[0.35em] text-rose/80">
                 Contacto
               </p>
-              <h2 className="text-2xl text-rose sm:text-3xl md:text-[2.1rem] md:leading-tight">Consultanos lo que necesites</h2>
-              <p className="text-sm text-terra/80 sm:text-base">
-                Coordiná envíos, solicitá precios mayoristas o pedinos asesoramiento sobre nuestros productos profesionales. Estamos
-                para acompañarte en cada etapa de tu cuidado capilar.
+              <h2 className="text-xl text-rose sm:text-2xl md:text-3xl lg:text-[2.1rem] lg:leading-tight">Consultanos lo que necesites</h2>
+              <p className="text-sm leading-relaxed text-terra/80 sm:text-base">
+                Coordiná envíos, solicitá precios mayoristas o pedinos asesoramiento sobre nuestros productos profesionales. Estamos para acompañarte en cada etapa de tu cuidado capilar.
               </p>
               <div className="space-y-4 rounded-3xl border border-rose/15 bg-white/70 p-5">
                 <div>
@@ -126,7 +125,7 @@ export default function Contact() {
                 </Button>
               </div>
             </div>
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 rounded-[28px] border border-rose/15 bg-white/75 p-4 shadow-inner sm:gap-5 sm:p-6 md:p-7 lg:grid-cols-2">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-3 rounded-[28px] border border-rose/15 bg-white/75 p-4 shadow-inner sm:gap-4 sm:p-5 md:gap-5 md:p-6 lg:grid-cols-2 lg:p-7">
               <div className="flex flex-col gap-2">
                 <label className="text-xs uppercase tracking-[0.2em] text-rose/70 sm:text-sm">
                   Nombre

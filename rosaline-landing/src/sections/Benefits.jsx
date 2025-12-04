@@ -41,12 +41,11 @@ const itemVariants = {
 
 export default function Benefits() {
   return (
-    <section id="beneficios" className="bg-white py-12 sm:py-16 md:py-20">
+    <section id="beneficios" className="bg-white pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-10 md:pb-20">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 text-center sm:gap-10 md:gap-12 sm:px-6">
-        <div className="space-y-4">
-          <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Beneficios</p>
-          <h2 className="text-2xl sm:text-4xl">Cuidamos tu cabello con propósito</h2>
-          <p className="mx-auto max-w-3xl text-sm text-terra/80 sm:text-base">
+        <div className="space-y-3 sm:space-y-4">
+          <h2 className="text-xl sm:text-3xl md:text-4xl">Beneficios</h2>
+          <p className="mx-auto max-w-3xl text-sm leading-relaxed text-terra/80 sm:text-base">
             Cada tratamiento Rosaline Olavarría está diseñado para nutrir profundamente, potenciar la luminosidad natural y proteger la fibra capilar.
           </p>
         </div>

@@ -466,7 +466,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
     >
       <Motion.button
         type="button"
-        className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-cream/40 via-white to-cream/30 sm:h-80 md:h-96 lg:h-[420px] cursor-pointer"
+        className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-[#ffd6c8] via-[#ff9d85] to-[#ff6f63] sm:h-80 md:h-96 lg:h-[420px] cursor-pointer"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -564,11 +564,11 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
         )}
         <span className="sr-only">Ver {product.name}</span>
       </Motion.button>
-      <div className="flex flex-1 flex-col gap-5 p-6 sm:p-7 md:p-8">
+      <div className="flex flex-1 flex-col gap-4 p-5 sm:gap-5 sm:p-6 md:p-7 lg:p-8">
         <div className="flex flex-col gap-3">
           <div className="flex items-start justify-between gap-3">
             <Motion.h3 
-              className="text-xl font-semibold text-terra sm:text-2xl leading-tight"
+              className="text-lg font-semibold text-terra sm:text-xl md:text-2xl leading-tight"
               whileHover={{ x: 2 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
@@ -610,7 +610,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
           <Motion.button
             type="button"
             onClick={() => onAddToCart(product)}
-            className="w-full rounded-xl bg-gradient-to-r from-rose to-rose/90 text-white font-semibold py-3 px-4 text-sm sm:text-base shadow-md shadow-rose/30 hover:shadow-lg hover:shadow-rose/40 transition-all flex items-center justify-center gap-2"
+            className="w-full rounded-xl bg-gradient-to-r from-[#ff6f63] via-[#ff9d85] to-[#ff6f63] text-white font-semibold py-3 px-4 text-sm sm:text-base shadow-md shadow-rose/30 hover:shadow-lg hover:shadow-rose/40 transition-all flex items-center justify-center gap-2"
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -685,7 +685,8 @@ export default function Products() {
       imageKey,
       title: product.name,
       description: product.description,
-      alt: product.imageAlt
+      alt: product.imageAlt,
+      product: product
     })
   }
 
@@ -766,18 +767,17 @@ export default function Products() {
   }
 
   return (
-    <section id="productos" className="bg-cream py-16 sm:py-20">
+    <section id="productos" className="bg-cream pt-4 pb-16 sm:pt-6 sm:pb-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Productos</p>
-          <h2 className="mt-4 text-2xl sm:text-4xl">Colección signature</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm text-terra/80 sm:text-base">
+          <h2 className="text-xl sm:text-3xl md:text-4xl">Productos</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-terra/80 sm:mt-4 sm:text-base">
             Filtrá por nombre, categoría o beneficio para encontrar el tratamiento ideal.
           </p>
         </div>
-        <div className="mx-auto mt-8 flex w-full max-w-4xl flex-col gap-4 sm:flex-row sm:items-center">
+        <div className="mx-auto mt-6 flex w-full max-w-4xl flex-col gap-4 sm:mt-8 sm:flex-row sm:items-center">
           {/* Buscador */}
-          <div className="flex flex-1 items-center gap-3 rounded-full border border-rose/30 bg-white/70 px-4 py-2.5 sm:py-3 shadow-sm focus-within:ring-2 focus-within:ring-rose/40">
+          <div className="flex flex-1 items-center gap-2 rounded-full border border-rose/30 bg-white/70 px-3 py-2 sm:gap-3 sm:px-4 sm:py-2.5 md:py-3 shadow-sm focus-within:ring-2 focus-within:ring-rose/40">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -793,7 +793,7 @@ export default function Products() {
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
               placeholder="Buscar producto, categoría o beneficio..."
-              className="w-full bg-transparent text-sm text-terra placeholder:text-terra/50 focus:outline-none sm:text-base"
+              className="w-full bg-transparent text-xs text-terra placeholder:text-terra/50 focus:outline-none sm:text-sm md:text-base"
             />
             {searchTerm && (
               <button
@@ -814,7 +814,7 @@ export default function Products() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full appearance-none rounded-full border border-rose/30 bg-white/70 px-4 py-2.5 pr-10 text-sm text-terra shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-rose/40 sm:w-auto sm:min-w-[200px] sm:py-3 sm:text-base"
+              className="w-full appearance-none rounded-full border border-rose/30 bg-white/70 px-3 py-2 pr-10 text-xs text-terra shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-rose/40 sm:w-auto sm:min-w-[180px] sm:px-4 sm:py-2.5 sm:text-sm md:min-w-[200px] md:py-3 md:text-base"
               aria-label="Filtrar por categoría"
             >
               <option value="">Todas las categorías</option>
@@ -870,7 +870,7 @@ export default function Products() {
             </p>
           </Motion.div>
         )}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
+        <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7 xl:gap-8">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, index) => (
               <ProductCard
@@ -902,7 +902,7 @@ export default function Products() {
             onClick={handleCloseModal}
           >
             <Motion.div
-              className="relative w-full max-w-6xl overflow-hidden rounded-3xl bg-white shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)] mx-4 flex flex-col md:flex-row"
+              className="relative w-full max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#ffd6c8] via-[#ff9d85] to-[#ff6f63] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)] mx-4 flex flex-col md:flex-row"
               initial={{ scale: 0.92, opacity: 0.6 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
@@ -921,7 +921,7 @@ export default function Products() {
               </button>
               
               {/* Imagen */}
-              <div className="flex items-center justify-center bg-cream/30 p-4 md:p-6 md:w-1/2">
+              <div className="flex items-center justify-center bg-gradient-to-br from-[#ffd6c8] via-[#ff9d85] to-[#ff6f63] p-4 md:p-6 md:w-1/2">
                 <ResponsivePicture
                   data={modalImageData}
                   alt={modalData.alt}
@@ -933,9 +933,28 @@ export default function Products() {
               </div>
               
               {/* Descripción */}
-              <div className="flex flex-col justify-start space-y-4 px-6 py-6 md:px-8 md:pt-8 md:pb-8 md:w-1/2">
+              <div className="flex flex-col justify-start space-y-4 px-6 py-6 md:px-8 md:pt-8 md:pb-8 md:w-1/2 bg-white/95">
                 <h3 className="text-xl font-semibold text-rose sm:text-2xl">{modalData.title}</h3>
                 <p className="text-sm leading-relaxed text-terra/80 sm:text-base">{modalData.description}</p>
+                {modalData.product && (
+                  <Motion.button
+                    type="button"
+                    onClick={() => {
+                      addToCart(modalData.product)
+                    }}
+                    className="mt-4 w-auto max-w-fit rounded-md bg-gradient-to-r from-[#ff6f63] via-[#ff9d85] to-[#ff6f63] text-white font-medium py-2.5 px-3 text-xs shadow-sm shadow-rose/30 hover:shadow-md hover:shadow-rose/40 transition-all flex items-center justify-center gap-1.5"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                      <line x1="3" y1="6" x2="21" y2="6" />
+                      <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    Agregar al carrito
+                  </Motion.button>
+                )}
               </div>
             </Motion.div>
           </Motion.div>

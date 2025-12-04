@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-cream pt-2 pb-16 sm:pt-0 sm:pb-28 lg:pt-0 lg:pb-32"
+      className="relative overflow-hidden bg-cream pt-2 pb-8 sm:pt-0 sm:pb-12 lg:pt-0 lg:pb-16"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,96,102,0.16),_transparent_65%)]" />
@@ -36,13 +36,13 @@ export default function Hero() {
                 <div className="absolute inset-0 rounded-[28px] bg-gradient-to-t from-terra/15 via-transparent to-transparent" />
               </div>
             </div>
-          <h1 className="text-3xl leading-tight text-rose sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="text-2xl leading-tight text-rose sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
             Belleza capilar consciente con resultados profesionales
           </h1>
-          <p className="mt-5 max-w-xl text-sm text-terra/80 sm:mt-6 sm:text-base md:text-lg lg:text-xl">
+          <p className="mt-4 max-w-xl text-sm text-terra/80 sm:mt-5 sm:text-base md:mt-6 md:text-lg lg:text-xl">
             Tratamientos premium y fórmulas veganas para nutrir, proteger y realzar cada hebra. Descubrí una rutina hecha a medida para tu cabello.
           </p>
-            <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-start">
+            <div className="mt-6 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:justify-start sm:gap-4">
               <Button href="https://wa.me/542284578166" target="_blank" rel="noreferrer">
                 Consultanos por envíos
               </Button>
