@@ -16,7 +16,9 @@ export default {
       fontFamily: {
         display: ["Playfair Display", "serif"],
         body: ["Open Sans", "sans-serif"],
-        cinzel: ["Cinzel", "serif"]
+        cinzel: ["Cinzel", "serif"],
+        delius: ["Delius Unicase", "cursive"],
+        luckiest: ["Luckiest Guy", "cursive"]
       }
     }
   },
