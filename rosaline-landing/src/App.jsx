@@ -304,35 +304,6 @@ export default function App() {
         </div>
       </footer>
       
-      {/* Botón circular flotante para volver arriba */}
-      {scrolled && (
-        <Motion.button
-          onClick={handleScrollButtonClick}
-          className={`fixed right-6 bottom-20 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-white/80 backdrop-blur-md border-2 border-rose/40 text-rose shadow-xl shadow-rose/25 transition-all sm:right-8 sm:bottom-24 sm:h-14 sm:w-14 focus:outline-none focus:ring-2 focus:ring-rose/50 ${
-            !isMobile ? 'sm:hover:bg-white sm:hover:border-rose/60 sm:hover:shadow-2xl sm:hover:shadow-rose/35' : ''
-          }`}
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          whileHover={!isMobile ? { scale: 1.1, y: -4 } : {}}
-          whileTap={!isMobile ? { scale: 0.95 } : {}}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          aria-label={isAtBottom ? 'Volver al inicio' : 'Bajar suavemente'}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6 sm:h-7 sm:w-7 transition-transform duration-300"
-          >
-            {isAtBottom ? <path d="m18 15-6-6-6 6" /> : <path d="m6 9 6 6 6-6" />}
-          </svg>
-        </Motion.button>
-      )}
       {bannerVisible && <CookieConsentBanner onConsent={handleConsent} />}
       {hasConsent && <Analytics />}
     </div>
