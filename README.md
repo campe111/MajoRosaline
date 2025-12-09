@@ -1,9 +1,9 @@
 
-# 🌿 Rosaline Olavarría – Landing Page
+# Rosaline Olavarría – Landing Page
 
 Landing page desarrollada para **Rosaline Olavarría**, emprendimiento de cosmética capilar vegana y profesional con foco en salud y belleza. El sitio presenta productos destacados, beneficios de cada línea y canales de contacto directo para ventas mayoristas y minoristas.
 
-## ✨ Características principales
+##  Características principales
 
 - Estética femenina, natural y profesional con paleta cálida: rosa coral `#FB6066`, crema suave `#FFefc1`, amarillo miel `#FDD86E`, durazno `#FFA463` y terracota `#F66B40`.
 - Tipografías elegantes Playfair Display (títulos) y Open Sans (texto) desde Google Fonts.
@@ -12,7 +12,7 @@ Landing page desarrollada para **Rosaline Olavarría**, emprendimiento de cosmé
 - Animaciones suaves al hacer scroll con Framer Motion.
 - Layout responsive con navegación móvil y CTA hacia WhatsApp (`+54 2284 578166`).
 
-## 🧩 Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - **React + Vite** – Stack ligero para SPA con HMR.
 - **Tailwind CSS** – Estilos utilitarios con configuración personalizada de colores y tipografías.
@@ -20,12 +20,12 @@ Landing page desarrollada para **Rosaline Olavarría**, emprendimiento de cosmé
 - **React Icons** – Íconos funcionales y botánicos.
 - **Vercel** – Despliegue rápido del proyecto.
 
-## 📦 Requisitos previos
+## Requisitos previos
 
 - Node.js 18 o superior.
 - npm 9 o superior.
 
-## 🚀 Instalación y scripts
+## Instalación y scripts
 
 ```bash
 git clone https://github.com/tuusuario/rosaline-landing.git
@@ -36,7 +36,7 @@ npm run build       # build optimizada para producción
 npm run preview     # previsualiza la build de producción
 ```
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```text
 rosaline-landing/
@@ -75,9 +75,6 @@ rosaline-landing/
 3. Usá el comando de build `npm run build` y el directorio de salida `dist/`.
 4. Configurá variables de entorno necesarias (por ejemplo, enlaces de WhatsApp o correos).
 
-## 🔜 Próximos pasos sugeridos
-
-- Sustituir textos e imágenes mock por contenido oficial de la marca.
-- Integrar un servicio de formularios (Formspree, Netlify Forms o backend propio) para recibir consultas reales.
-- Agregar analítica (Google Analytics, Meta Pixel, Clarity, etc.).
-- Internacionalizar la landing para mercados fuera de habla hispana.
+## Desarrollado por CxmpeDev
+linkedin: https://www.linkedin.com/in/brianocampos/
+instagram: https://www.instagram.com/cxmpedev/
