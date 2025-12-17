@@ -466,7 +466,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
     >
       <Motion.button
         type="button"
-        className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-[#ffd6c8] via-[#ff9d85] to-[#ff6f63] sm:h-80 md:h-96 lg:h-[420px] cursor-pointer"
+        className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-[#000000] via-[#000000] to-[#000000] sm:h-80 md:h-96 lg:h-[420px] cursor-pointer"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -494,7 +494,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
               alt={`${product.imageAlt} ${activeImage + 1}`}
               fallbackSrc={logoImg}
               pictureClassName="block h-full w-full"
-              imgClassName={`h-full w-full object-contain transition-all duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100 group-hover:brightness-110'}`}
+              imgClassName={`h-full w-full object-cover transition-all duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100 group-hover:brightness-110'}`}
               loading={index < 3 ? 'eager' : 'lazy'}
               onLoad={handleImageLoad}
             />
@@ -630,6 +630,7 @@ function ProductCard({ product, index, onImageClick, getImageData, getThumbnailD
 
 export default function Products() {
   const [modalData, setModalData] = useState(null)
+  const [modalActiveImage, setModalActiveImage] = useState(0)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
   const [cart, setCart] = useState([])
@@ -681,6 +682,9 @@ export default function Products() {
   }, [modalData])
 
   const handleImageClick = (imageKey, product) => {
+    // Encontrar el índice de la imagen actual
+    const imageIndex = product.images?.findIndex(img => img === imageKey) ?? 0
+    setModalActiveImage(imageIndex >= 0 ? imageIndex : 0)
     setModalData({
       imageKey,
       title: product.name,
@@ -690,7 +694,10 @@ export default function Products() {
     })
   }
 
-  const handleCloseModal = () => setModalData(null)
+  const handleCloseModal = () => {
+    setModalData(null)
+    setModalActiveImage(0)
+  }
 
   // Cerrar modal con tecla ESC
   useEffect(() => {
@@ -705,7 +712,15 @@ export default function Products() {
     }
   }, [modalData])
 
-  const modalImageData = modalData?.imageKey ? getProductImage(modalData.imageKey) : null
+  // Obtener la imagen actual del modal basada en el índice activo
+  const getCurrentModalImage = () => {
+    if (!modalData?.product?.images) return null
+    const currentImageName = modalData.product.images[modalActiveImage]
+    return currentImageName ? getProductImage(currentImageName) : null
+  }
+  
+  const modalImageData = getCurrentModalImage()
+  const hasMultipleModalImages = modalData?.product?.images && modalData.product.images.length > 1
 
   const clearFilters = () => {
     setSearchTerm('')
@@ -902,7 +917,7 @@ export default function Products() {
             onClick={handleCloseModal}
           >
             <Motion.div
-              className="relative w-full max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#ffd6c8] via-[#ff9d85] to-[#ff6f63] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)] mx-4 flex flex-col md:flex-row"
+              className="relative w-full max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-black via-[#ff6f63] to-[#ff9d85] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)] mx-4 flex flex-col md:flex-row"
               initial={{ scale: 0.92, opacity: 0.6 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
@@ -921,15 +936,77 @@ export default function Products() {
               </button>
               
               {/* Imagen */}
-              <div className="flex items-center justify-center bg-gradient-to-br from-[#ffd6c8] via-[#ff9d85] to-[#ff6f63] p-4 md:p-6 md:w-1/2">
-                <ResponsivePicture
-                  data={modalImageData}
-                  alt={modalData.alt}
-                  fallbackSrc={logoImg}
-                  pictureClassName="block"
-                  imgClassName="max-h-[60vh] md:max-h-[80vh] w-full object-contain"
-                  loading="eager"
-                />
+              <div className="relative flex items-center justify-center bg-gradient-to-br from-black via-[#ff6f63] to-[#ff9d85] p-4 md:p-6 md:w-1/2">
+                <AnimatePresence mode="wait">
+                  <Motion.div
+                    key={modalActiveImage}
+                    className="w-full h-full flex items-center justify-center"
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -30 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  >
+                    <ResponsivePicture
+                      data={modalImageData}
+                      alt={`${modalData.alt} ${modalActiveImage + 1}`}
+                      fallbackSrc={logoImg}
+                      pictureClassName="block"
+                      imgClassName="max-h-[60vh] md:max-h-[80vh] w-full object-contain"
+                      loading="eager"
+                    />
+                  </Motion.div>
+                </AnimatePresence>
+                
+                {/* Botones de navegación para múltiples imágenes */}
+                {hasMultipleModalImages && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setModalActiveImage((prev) => (prev - 1 + modalData.product.images.length) % modalData.product.images.length)
+                      }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-12 w-12 rounded-full bg-white/90 backdrop-blur-sm text-rose border border-rose/20 transition-all duration-300 hover:bg-white hover:scale-110 shadow-lg"
+                      aria-label="Imagen anterior"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                        <path d="M15 18l-6-6 6-6" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setModalActiveImage((prev) => (prev + 1) % modalData.product.images.length)
+                      }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-12 w-12 rounded-full bg-white/90 backdrop-blur-sm text-rose border border-rose/20 transition-all duration-300 hover:bg-white hover:scale-110 shadow-lg"
+                      aria-label="Imagen siguiente"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </button>
+                    {/* Indicadores de imágenes múltiples */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md shadow-lg">
+                      {modalData.product.images.map((_, imageIndex) => (
+                        <button
+                          key={imageIndex}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setModalActiveImage(imageIndex)
+                          }}
+                          className={`h-2 rounded-full transition-all ${
+                            imageIndex === modalActiveImage
+                              ? 'w-8 bg-rose'
+                              : 'w-2 bg-rose/30 hover:bg-rose/50'
+                          }`}
+                          aria-label={`Ver imagen ${imageIndex + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
               
               {/* Descripción */}
